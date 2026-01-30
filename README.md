@@ -1,46 +1,48 @@
-# Ты нужен. Останься.
+# NotSuicidePls
 
-Сайт поддержки для людей, находящихся в кризисных состояниях и думающих о суициде.
+A support website for people in crisis situations and those contemplating suicide.
 
-## О проекте
+## About the Project
 
-Этот сайт создан, чтобы дать человеку паузу, поддержать его словами и предоставить контакты помощи. Спокойный, минималистичный дизайн без отвлекающих элементов. Основной фокус — на содержании и доступности телефонов доверия.
+This website was created to give individuals a pause, provide support through words, and offer contact information for professional help. It features a calm, minimalist design without distracting elements. The main focus is on content and the accessibility of helplines.
 
-### Возможности
+### Features
 
-- Экран паузы с анимацией дыхания (4 секунды вдох, 4 секунды выдох)
-- Основной текст поддержки с плавным появлением при прокрутке
-- Автоматическое определение страны пользователя для показа релевантного телефона доверия
-- Телефоны доверия для 16 стран СНГ и Балтии
-- Закреплённая плашка с телефоном доверия на всех экранах
-- PWA-поддержка для сохранения на телефон
-- Полная доступность (клавиатурная навигация, скринридеры)
-- Адаптивный дизайн с приоритетом мобильных устройств
+- **Pause screen** with a breathing animation (4 seconds inhale, 4 seconds exhale)
+- **Main support text** with smooth fade-in effects on scroll
+- **Automatic country detection** to display relevant local helplines
+- **Helplines** for 16 CIS and Baltic countries
+- **Sticky helpline banner** visible on all screens
+- **PWA support** for saving the site to a mobile device
+- **Full accessibility** (keyboard navigation, screen readers)
+- **Responsive design** with a mobile-first priority
 
-## Технологии
+## Technologies
 
-- [Astro](https://astro.build/) — статический генератор сайтов
+- [Astro](https://astro.build/) — Static Site Generator
 - TypeScript
-- CSS (без фреймворков)
-- Минимальный JavaScript для интерактивности
+- CSS (Framework-free)
+- Minimal JavaScript for interactivity
 
-## Структура проекта
+## Project Structure
+
 
 ```
-├── public/              # Статические файлы
+
+├── public/              # Static files
 │   ├── favicon.svg
 │   ├── manifest.json
 │   └── robots.txt
 ├── src/
-│   ├── components/      # Astro-компоненты
-│   │   ├── BreathingCircle.astro   # Анимация дыхания
-│   │   ├── ContentBlock.astro      # Блок текста с анимацией
-│   │   ├── CountrySelector.astro   # Выбор страны
-│   │   ├── HelplineBanner.astro    # Закреплённая плашка
-│   │   └── HelplineCard.astro      # Карточка телефонов
+│   ├── components/      # Astro components
+│   │   ├── BreathingCircle.astro   # Breathing animation
+│   │   ├── ContentBlock.astro      # Animated text block
+│   │   ├── CountrySelector.astro   # Country selection
+│   │   ├── HelplineBanner.astro    # Sticky banner
+│   │   └── HelplineCard.astro      # Helpline info card
 │   ├── data/
-│   │   └── helplines.json          # Телефоны доверия
-│   ├── i18n/            # Локализация
+│   │   └── helplines.json          # Helpline database
+│   ├── i18n/            # Localization
 │   │   ├── config.ts
 │   │   ├── ru.json
 │   │   └── utils.ts
@@ -52,57 +54,59 @@
 │       └── global.css
 ├── astro.config.mjs
 ├── package.json
-└── tsconfig.json
+├── tsconfig.json
+
 ```
 
-## Запуск
+## Getting Started
 
-### Требования
+### Requirements
 
 - Node.js 18+
-- npm или pnpm
+- npm or pnpm
 
-### Установка
+### Installation
 
 ```bash
-# Клонировать репозиторий
+# Clone the repository
 git clone https://github.com/AnmiTaliDev/NoSuicide_site.git
 cd NoSuicide_site
 
-# Установить зависимости
+# Install dependencies
 npm install
 
-# Запустить в режиме разработки
+# Run in development mode
 npm run dev
 
-# Собрать для продакшена
+# Build for production
 npm run build
 
-# Предпросмотр собранной версии
+# Preview the production build
 npm run preview
+
 ```
 
-## Добавление нового языка
+## Adding a New Language
 
-1. Создайте файл перевода в `src/i18n/` (например, `uk.json`)
-2. Добавьте локаль в `src/i18n/config.ts`
-3. Импортируйте перевод в `src/i18n/utils.ts`
+1. Create a translation file in `src/i18n/` (e.g., `en.json`).
+2. Add the locale to `src/i18n/config.ts`.
+3. Import the translation in `src/i18n/utils.ts`.
 
-## Добавление телефонов для новой страны
+## Adding Helplines for a New Country
 
-Добавьте данные в `src/data/helplines.json` по образцу существующих стран:
+Add the data to `src/data/helplines.json` following the existing pattern:
 
 ```json
 {
   "XX": {
-    "name": "Название страны",
-    "nameLocal": "Местное название",
+    "name": "Country Name",
+    "nameLocal": "Local Name",
     "code": "XX",
     "primary": {
       "phone": "123",
-      "name": "Название линии",
-      "description": "Описание",
-      "hours": "часы работы",
+      "name": "Line Name",
+      "description": "Description",
+      "hours": "Operating hours",
       "free": true
     },
     "lines": [...],
@@ -110,18 +114,14 @@ npm run preview
     "chat": null
   }
 }
+
 ```
 
-## Лицензия
+## License
 
-GNU GPL 3.0 — см. файл [LICENSE](LICENSE)
+GNU GPL 3.0 — see the [LICENSE](https://www.google.com/search?q=LICENSE) file.
 
-## Авторы
+## Authors
 
-- Разработчик: [AnmiTaliDev](https://github.com/AnmiTaliDev)
-- Автор идеи: GLOR
-
----
-
-Если вам или кому-то из ваших близких нужна помощь — не оставайтесь одни.
-Телефон доверия в России: **8-800-2000-122** (бесплатно, круглосуточно)
+* Developer: [AnmiTaliDev](https://github.com/AnmiTaliDev)
+* Idea by: GLOR
