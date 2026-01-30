@@ -1,4 +1,4 @@
-# NotSuicidePls
+# NoSuicidePls
 
 A support website for people in crisis situations and those contemplating suicide.
 
