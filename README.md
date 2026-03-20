@@ -69,8 +69,8 @@ This website was created to give individuals a pause, provide support through wo
 
 ```bash
 # Clone the repository
-git clone https://github.com/AnmiTaliDev/NoSuicide_site.git
-cd NoSuicide_site
+git clone https://github.com/AnmiTaliDev/nosuicidepls.git
+cd nosuicidepls
 
 # Install dependencies
 npm install
