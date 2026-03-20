@@ -1,5 +1,9 @@
 ---
 import '../styles/global.css';
+import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+import ruTranslations from '../i18n/ru.json';
+import enTranslations from '../i18n/en.json';
+import kkTranslations from '../i18n/kk.json';
 
 interface Props {
   title: string;
@@ -9,6 +13,8 @@ interface Props {
 
 const { title, description, keywords } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL('/og-image.png', Astro.site);
+const allTranslations = { ru: ruTranslations, en: enTranslations, kk: kkTranslations };
 ---
 
 <!DOCTYPE html>
@@ -32,18 +38,24 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content="/og-image.png" />
+  <meta property="og:image" content={ogImageURL} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:site_name" content="Ты нужен. Останься." />
   <meta property="og:locale" content="ru_RU" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content="/og-image.png" />
+  <meta name="twitter:image" content={ogImageURL} />
 
   <!-- Безопасность и конфиденциальность -->
   <meta name="referrer" content="no-referrer" />
   <meta name="robots" content="index, follow" />
+  <meta name="author" content="AnmiTaliDev" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
 
   <!-- PWA -->
   <meta name="theme-color" content="#1a1625" />
@@ -54,26 +66,38 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta name="apple-mobile-web-app-title" content="Ты нужен" />
 
   <!-- Структурированные данные -->
-  <script type="application/ld+json">
+  <script type="application/ld+json" set:html={JSON.stringify([
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Ты нужен. Останься.",
+      "url": Astro.site?.toString(),
+      "inLanguage": "ru",
+      "description": description
+    },
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "Ты нужен. Останься.",
-      "description": "Сайт поддержки для людей в кризисных состояниях",
-      "url": "https://nosuicide.site",
+      "name": title,
+      "description": description,
+      "url": canonicalURL.toString(),
       "inLanguage": "ru",
       "isPartOf": {
         "@type": "WebSite",
         "name": "Ты нужен. Останься.",
-        "url": "https://nosuicide.site"
+        "url": Astro.site?.toString()
       },
       "about": {
         "@type": "Thing",
-        "name": "Психологическая поддержка",
-        "description": "Телефоны доверия и ресурсы помощи"
+        "name": "Психологическая поддержка и предотвращение суицида",
+        "description": "Телефоны доверия и ресурсы кризисной психологической помощи"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "People in crisis"
       }
     }
-  </script>
+  ])} />
 
   <!-- Предзагрузка шрифтов -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -81,11 +105,94 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <a href="#main-content" class="sr-only">Перейти к основному содержимому</a>
+  <a href="#main-content" class="sr-only" data-i18n-aria-label="skip">Перейти к основному содержимому</a>
+
+  <LanguageSwitcher />
 
   <main id="main-content">
     <slot />
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="site-footer-links">
+        <a href="/" data-i18n="pause.title">{ruTranslations.pause.title}</a>
+        <a href="/seems" data-i18n="resources.seemsLikeLink">{ruTranslations.resources.seemsLikeLink}</a>
+        <a href="/help-someone" data-i18n="resources.helpOthersLink">{ruTranslations.resources.helpOthersLink}</a>
+      </nav>
+      <p class="site-footer-credits">
+        <span data-i18n="footer.developer">{ruTranslations.footer.developer}</span>: <a href="https://github.com/AnmiTaliDev" target="_blank" rel="noopener noreferrer">AnmiTaliDev</a>
+        &nbsp;·&nbsp;
+        <span data-i18n="footer.ideaAuthor">{ruTranslations.footer.ideaAuthor}</span>: GLOR
+        &nbsp;·&nbsp;
+        <a href="https://github.com/AnmiTaliDev/nosuicidepls" target="_blank" rel="noopener noreferrer" data-i18n="footer.source">{ruTranslations.footer.source}</a>
+      </p>
+    </div>
+  </footer>
+
+  <script id="__i18n_data" type="application/json" set:html={JSON.stringify(allTranslations)} />
+
+  <script>
+    // i18n client-side switching
+    (function () {
+      const dataEl = document.getElementById('__i18n_data');
+      if (!dataEl) return;
+      const allTranslations = JSON.parse(dataEl.textContent || '{}');
+
+      function getVal(obj: Record<string, unknown>, key: string): string | undefined {
+        const result = key.split('.').reduce<unknown>((o, k) => {
+          if (o && typeof o === 'object') return (o as Record<string, unknown>)[k];
+          return undefined;
+        }, obj);
+        return typeof result === 'string' ? result : undefined;
+      }
+
+      function applyLocale(locale: string) {
+        const t = allTranslations[locale] || allTranslations['ru'];
+        if (!t) return;
+
+        document.querySelectorAll<HTMLElement>('[data-i18n]').forEach(el => {
+          const val = getVal(t, el.dataset.i18n!);
+          if (val !== undefined) el.textContent = val;
+        });
+
+        document.querySelectorAll<HTMLElement>('[data-i18n-aria]').forEach(el => {
+          const val = getVal(t, el.dataset.i18nAria!);
+          if (val !== undefined) el.setAttribute('aria-label', val);
+        });
+
+        // Multilingual name/desc in helpline cards
+        const nameKey = `data-name-${locale}`;
+        document.querySelectorAll<HTMLElement>(`[${nameKey}]`).forEach(el => {
+          const val = el.getAttribute(nameKey);
+          if (val) el.textContent = val;
+        });
+
+        // Hours translation map
+        const hoursMap = (t as any).common?.hoursMap as Record<string, string> | undefined;
+        if (hoursMap) {
+          document.querySelectorAll<HTMLElement>('[data-i18n-hours]').forEach(el => {
+            const ruHours = el.dataset.i18nHours!;
+            el.textContent = hoursMap[ruHours] ?? ruHours;
+          });
+        }
+
+        document.documentElement.lang = locale;
+        const titleVal = getVal(t, 'meta.title');
+        if (titleVal) document.title = titleVal;
+        const descMeta = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+        const descVal = getVal(t, 'meta.description');
+        if (descMeta && descVal) descMeta.content = descVal;
+      }
+
+      const saved = localStorage.getItem('locale') || 'ru';
+      if (saved !== 'ru') applyLocale(saved);
+
+      document.addEventListener('localeChanged', (e: Event) => {
+        applyLocale((e as CustomEvent<{ locale: string }>).detail.locale);
+      });
+    })();
+  </script>
 
   <script>
     // Инициализация анимации появления элементов при прокрутке
@@ -119,3 +226,41 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </script>
 </body>
 </html>
+
+<style>
+  .site-footer {
+    background: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-xl) var(--space-lg);
+  }
+  .site-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm) var(--space-lg);
+    margin-bottom: var(--space-md);
+    justify-content: center;
+  }
+  .site-footer-links a {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+  }
+  .site-footer-links a:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+  .site-footer-credits {
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+  .site-footer-credits a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+  }
+  .site-footer-credits a:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+</style>

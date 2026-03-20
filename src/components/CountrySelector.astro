@@ -11,8 +11,8 @@ const countries = getAllCountries();
 ---
 
 <div class="country-selector">
-  <label for={id} class="country-label">{label}</label>
-  <select id={id} class="country-select" aria-label={label}>
+  <label for={id} class="country-label" data-i18n="resources.selectCountry">{label}</label>
+  <select id={id} class="country-select" aria-label={label} data-i18n-aria="resources.selectCountry">
     {countries.map(country => (
       <option value={country.code}>
         {country.name}

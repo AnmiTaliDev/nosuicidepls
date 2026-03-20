@@ -1,14 +1,9 @@
 export const defaultLocale = 'ru';
 
 export const locales = {
-  ru: {
-    code: 'ru',
-    name: 'Русский',
-    flag: '🇷🇺'
-  }
-  // Будущие языки:
-  // uk: { code: 'uk', name: 'Українська', flag: '🇺🇦' },
-  // kk: { code: 'kk', name: 'Қазақша', flag: '🇰🇿' },
+  ru: { code: 'ru', name: 'Русский' },
+  en: { code: 'en', name: 'English' },
+  kk: { code: 'kk', name: 'Қазақша' },
 } as const;
 
 export type Locale = keyof typeof locales;

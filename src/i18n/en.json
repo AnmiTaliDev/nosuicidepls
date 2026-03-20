@@ -1,0 +1,203 @@
+{
+  "meta": {
+    "title": "You are needed. Stay. | Crisis Support",
+    "description": "You searched for a way out — here it is. Not methods to leave, but reasons to stay. Crisis hotlines and support for those who are struggling right now. Free, anonymous, 24/7.",
+    "keywords": "crisis hotline, mental health support, suicide prevention, want to die, don't want to live, how to commit suicide, suicidal thoughts, crisis support, free mental health help, psychological support 24/7, feeling hopeless, no reason to live"
+  },
+  "pause": {
+    "title": "Stop. Wait.",
+    "subtitle": "Drink some water. Take a deep breath. Just be here for a minute.",
+    "breatheIn": "Breathe in",
+    "breatheOut": "Breathe out",
+    "ready": "I'm ready to read on"
+  },
+  "content": {
+    "search": "If you were searching for how to end your life or how to disappear — you came to the right place. There are no methods here. Only words from people who understand what it's like when you don't want to live. And phone numbers of people who will listen right now.",
+    "block1": "If you're thinking about ending your life right now — stop. Just for a minute.",
+    "block2": "You are not weak. You are a person who has been carrying a weight for too long — a weight others don't even know about.",
+    "block3": "You are exhausted. Burned out. Drained. That's okay. It happens. There's no shame in that, no weakness.",
+    "block4": "Suicide is not an exit. It's just a moment when the pain became so loud it drowned out everything else.",
+    "block5": "You don't have to cope alone. Even if it feels like no one needs you — that's the pain talking, not reality. A broken mind lies. Very convincingly.",
+    "block6": "You matter. Even if you can't feel it. You are needed. Even if it doesn't seem that way.",
+    "block7": "The people who truly care about you would be destroyed if you were gone. You just can't see it right now, because pain blinds.",
+    "block8": "Life doesn't have to be beautiful or inspiring. It just has to continue — so you have a chance to get through this.",
+    "block9": "Right now your mind is on fire. It feels like the only solution is to turn everything off. But this state is temporary. No matter how eternal it seems.",
+    "block10": "You can't imagine how much can change. How many normal, warm, funny, peaceful days are still ahead. You don't have to believe that right now — and that's okay. Just stay."
+  },
+  "final": {
+    "title": "Let's put off this decision",
+    "text1": "For an hour. For two. For the night — for as long as you can.",
+    "text2": "Sometimes it's enough to just survive the darkest moment to later say: 'I made it. And I'm glad I didn't leave.'",
+    "text3": "You don't have to be happy right now. You don't have to be strong. You simply have the right to live. And you deserve it.",
+    "callButton": "Call a helpline",
+    "chatButton": "Chat with support",
+    "breatheButton": "Go back and breathe"
+  },
+  "resources": {
+    "title": "Resources & Contacts",
+    "selectCountry": "Select your country",
+    "allCountries": "Crisis hotlines by country",
+    "websites": "Support websites",
+    "helpOthers": "How to help a loved one",
+    "helpOthersText1": "If you've noticed someone close to you is in crisis:",
+    "helpOthersText2": "Don't leave them alone. Just be there.",
+    "helpOthersText3": "Listen without judgement. Don't try to immediately solve the problem.",
+    "helpOthersText4": "Ask directly: 'Are you thinking about suicide?' — it doesn't provoke, it opens the door to talk.",
+    "helpOthersText5": "Help them connect with a specialist, or call together.",
+    "helpOthersText6": "Watch for sudden changes in behavior — that's a signal.",
+    "helpOthersLink": "Full guide: how to help a loved one →",
+    "seemsLikeLink": "When it seems like everything is bad →"
+  },
+  "common": {
+    "free": "free",
+    "hours24": "24/7",
+    "hoursMap": {
+      "круглосуточно": "24/7",
+      "будни 10:00–18:00": "Weekdays 10:00–18:00",
+      "будни 9:00–17:00": "Weekdays 9:00–17:00",
+      "6:00–18:00": "6:00–18:00",
+      "будни 12:00–16:00": "Weekdays 12:00–16:00",
+      "ежедневно 12:00–22:00": "Daily 12:00–22:00"
+    },
+    "phone": "Phone",
+    "chat": "Chat",
+    "website": "Website",
+    "helpline": "Crisis Hotline",
+    "changeCountry": "Change country"
+  },
+  "seemsLike": {
+    "meta": {
+      "title": "When it seems like... | You Are Needed. Stay.",
+      "description": "When thoughts like 'nobody needs me', 'it won't get better', or 'I'm a burden' feel true — they're not. They're symptoms of pain. Here's what's actually happening."
+    },
+    "hero": {
+      "back": "← Back to main page",
+      "tag": "When thoughts lie",
+      "title": "When it seems like...",
+      "subtitle": "In crisis, the mind speaks very convincingly. It lies — but it doesn't feel like a lie. Here are six thoughts that feel true when you're in pain."
+    },
+    "intro": "Each of these thoughts is a symptom. Not a description of who you are. A symptom of pain, exhaustion, and depletion. Read on — this isn't an argument. Just another perspective sitting beside you.",
+    "label": "It seems like...",
+    "reframeLabel": "What's actually happening",
+    "tryLabel": "Try this now",
+    "d1": {
+      "thought": "Nobody needs me",
+      "validation": "This is one of the heaviest thoughts there is. When it arrives, it feels like a fact — not a guess.",
+      "reframe": "Pain narrows your field of vision. It hides people who are thinking about you right now. Not because they don't exist — but because in this state, the mind can't see them. Feeling unwanted and actually being unwanted are two different things.",
+      "try": "Write down the name of one person you've ever had a real conversation with. Just the name. Nothing else needs to happen."
+    },
+    "d2": {
+      "thought": "They don't want to talk to me",
+      "validation": "It's scary to reach out first. Scary to be rejected again. Silence feels safer.",
+      "reframe": "Most people you could message right now don't know you're hurting. They haven't turned away. They just don't know.",
+      "try": "Send one person 'Hey.' Just that. No explanations, no apologies."
+    },
+    "d3": {
+      "thought": "I'm a bad person",
+      "validation": "The fact that you're asking this says something about you. People who truly don't care about others don't usually wonder if they're bad.",
+      "reframe": "You've probably done something you regret. Or feel like you're not enough. That's not the same as being a bad person. It means you're human and you care.",
+      "try": "Remember one moment when you did something kind — even something small. Just remember it. Don't evaluate it."
+    },
+    "d4": {
+      "thought": "It won't get better",
+      "validation": "When you've been in pain for a long time, the mind stops believing in change. That's not weakness — it's what pain does to us.",
+      "reframe": "Right now you're at a point where pain blocks your view. It won't vanish on its own tomorrow — but 'forever' doesn't actually mean forever. People come out of states that felt endless. So many people.",
+      "try": "Call or message a crisis line. Not because it 'should help' — just to talk to a real person right now."
+    },
+    "d5": {
+      "thought": "I'm a burden to everyone",
+      "validation": "This thought hurts in a particular way — because it's trying to protect others at the cost of yourself.",
+      "reframe": "A mind in crisis underestimates how much others would be hurt by your absence. The people who care about you don't see you as a burden — even when it feels that way. Your presence in their lives is worth more than your absence.",
+      "try": "Say to yourself, aloud or silently: 'This is a thought, not a fact.' Just once. No pressure."
+    },
+    "d6": {
+      "thought": "Nobody understands",
+      "validation": "Sometimes this is true — the people around you don't understand. And that loneliness is unlike almost anything else.",
+      "reframe": "Understanding doesn't have to mean 'went through the same thing.' There are therapists, crisis volunteers, careful listeners who know how to be present without fully comprehending, but still feeling with you. You don't have to believe this right now. But it's possible to try.",
+      "try": "Call a helpline. Say only: 'I'm having a really hard time right now.' That's enough."
+    },
+    "close": {
+      "text": "These thoughts are not you. They are symptoms. And symptoms can be treated.",
+      "button": "Call a helpline"
+    },
+    "hotlines": {
+      "title": "Talk to someone right now",
+      "text": "Anonymous. Free. Without judgment.",
+      "link": "All crisis hotlines by country →"
+    }
+  },
+  "helpSomeone": {
+    "meta": {
+      "title": "How to Help a Loved One in Crisis | You Are Needed. Stay.",
+      "description": "You noticed someone close to you is struggling. A step-by-step guide: what to say, what to do, and what to avoid if a loved one is thinking about suicide."
+    },
+    "hero": {
+      "back": "← Back to main page",
+      "tag": "For those who are close",
+      "title": "You noticed. That already matters.",
+      "subtitle": "If someone near you is in crisis and you don't know what to say, are afraid of making things worse, or just feel lost — that's okay. Keep reading."
+    },
+    "signs": {
+      "title": "Warning signs you can't ignore",
+      "intro": "These signals may mean someone is thinking about suicide — even if they don't say it directly:",
+      "s1": "Talking about death, 'disappearing', or 'everyone would be better off without me' — directly or as hints",
+      "s2": "Giving away possessions, saying goodbye, putting affairs in order",
+      "s3": "Suddenly becoming calm after a long period of depression — this can mean a decision has been made",
+      "s4": "Withdrawing, not responding, avoiding people",
+      "s5": "Sudden changes in behavior, sleep, or appetite",
+      "s6": "Increased use of alcohol or other substances",
+      "s7": "Saying they feel like a burden or that they're worthless",
+      "s8": "Can't picture themselves in the future — makes no plans, never says 'when I grow up', 'next year', 'this summer'",
+      "s9": "Joking about suicide or death as if it's normal — 'lol I'd kill myself', 'haha I'd slit my wrists' — dark humor like this often masks real pain the person doesn't know how to talk about",
+      "note": "One sign is a reason to talk. Several signs — act immediately."
+    },
+    "steps": {
+      "title": "What to do right now — step by step",
+      "s1title": "Ask directly",
+      "s1text": "Don't be afraid to ask: 'Are you thinking about ending your life?' Research shows that asking directly reduces risk, not increases it. A person feels seen when someone asks.",
+      "s2title": "Don't leave them alone",
+      "s2text": "In an acute moment — be there. Physically. If you can't be there yourself, ask someone else. Being alone during a crisis is dangerous.",
+      "s3title": "Remove access to means",
+      "s3text": "It feels awkward, but it saves lives. Medications, sharp objects — remove or secure them. Without judgment, just as a fact.",
+      "s4title": "Call a crisis hotline",
+      "s4text": "You can call together, or call yourself to find out what to do. Specialists know what to say. They will help you too.",
+      "s5title": "Connect with a professional",
+      "s5text": "A psychiatrist, therapist, or emergency services — don't be afraid to involve professionals. It's not a betrayal. It's care."
+    },
+    "talk": {
+      "title": "What to say — and what not to say",
+      "doTitle": "Say",
+      "do1": "'I'm here. I'm listening.'",
+      "do2": "'I'm glad you told me.'",
+      "do3": "'You matter to me.'",
+      "do4": "'I'm worried about you. Are you thinking about suicide?'",
+      "do5": "'What can I do right now?'",
+      "dontTitle": "Don't say",
+      "dont1": "'Stop making things up, others have it worse'",
+      "dont2": "'You're being selfish / think of your family'",
+      "dont3": "'You're strong, pull yourself together'",
+      "dont4": "'It'll pass on its own'",
+      "dont5": "'Promise me you won't do anything'"
+    },
+    "myth": {
+      "title": "'What if asking pushes them toward it?'",
+      "text": "This is the most common fear. And it makes sense. But research is clear: asking directly about suicide does not push someone to act. On the contrary — it makes them feel seen and not judged. Silence is more dangerous than talking."
+    },
+    "yourself": {
+      "title": "Take care of yourself too",
+      "text1": "Being close to someone in crisis is hard. You may feel fear, helplessness, guilt — even anger. That's normal.",
+      "text2": "You don't have to handle this alone. Talk to someone you trust. Call a hotline — they support those who are close to someone in crisis too.",
+      "text3": "You are not responsible for someone else's choices. But you can be there. And that matters."
+    },
+    "hotlines": {
+      "title": "Crisis Hotlines",
+      "text": "Call on your own or together with your loved one. Free and anonymous.",
+      "link": "All crisis hotlines by country →"
+    }
+  },
+  "footer": {
+    "source": "Source code",
+    "developer": "Developer",
+    "ideaAuthor": "Idea by"
+  }
+}

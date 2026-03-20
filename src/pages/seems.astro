@@ -1,0 +1,426 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getTranslations } from '../i18n/utils';
+import helplines from '../data/helplines.json';
+
+const t = getTranslations();
+const s = t.seemsLike;
+
+const featuredCountries = ['RU', 'KZ', 'UA'] as const;
+const featuredLines = featuredCountries
+  .map(code => (helplines as Record<string, typeof helplines.RU>)[code])
+  .filter(Boolean);
+
+const distortions = ['d1', 'd2', 'd3', 'd4', 'd5', 'd6'] as const;
+---
+
+<Layout title={s.meta.title} description={s.meta.description}>
+
+  <!-- Шапка -->
+  <header class="page-header">
+    <div class="container">
+      <a href="/" class="back-link" data-i18n="seemsLike.hero.back">{s.hero.back}</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero-section section">
+    <div class="container">
+      <span class="hero-tag" data-i18n="seemsLike.hero.tag">{s.hero.tag}</span>
+      <h1 class="hero-title" data-i18n="seemsLike.hero.title">{s.hero.title}</h1>
+      <p class="hero-subtitle" data-i18n="seemsLike.hero.subtitle">{s.hero.subtitle}</p>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="intro-section section">
+    <div class="container">
+      <p class="intro-text" data-i18n="seemsLike.intro">{s.intro}</p>
+    </div>
+  </section>
+
+  <!-- Карточки -->
+  <section class="distortions-section section">
+    <div class="container">
+      <div class="distortions-grid">
+
+        <!-- d1 -->
+        <article class="distortion-card card fade-in">
+          <p class="thought-label" data-i18n="seemsLike.label">{s.label}</p>
+          <h2 class="thought-text" data-i18n="seemsLike.d1.thought">{s.d1.thought}</h2>
+          <div class="card-body">
+            <p class="validation-text" data-i18n="seemsLike.d1.validation">{s.d1.validation}</p>
+            <div class="reframe-block">
+              <span class="block-label" data-i18n="seemsLike.reframeLabel">{s.reframeLabel}</span>
+              <p data-i18n="seemsLike.d1.reframe">{s.d1.reframe}</p>
+            </div>
+            <div class="try-block">
+              <span class="block-label try-label" data-i18n="seemsLike.tryLabel">{s.tryLabel}</span>
+              <p class="try-text" data-i18n="seemsLike.d1.try">{s.d1.try}</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- d2 -->
+        <article class="distortion-card card fade-in">
+          <p class="thought-label" data-i18n="seemsLike.label">{s.label}</p>
+          <h2 class="thought-text" data-i18n="seemsLike.d2.thought">{s.d2.thought}</h2>
+          <div class="card-body">
+            <p class="validation-text" data-i18n="seemsLike.d2.validation">{s.d2.validation}</p>
+            <div class="reframe-block">
+              <span class="block-label" data-i18n="seemsLike.reframeLabel">{s.reframeLabel}</span>
+              <p data-i18n="seemsLike.d2.reframe">{s.d2.reframe}</p>
+            </div>
+            <div class="try-block">
+              <span class="block-label try-label" data-i18n="seemsLike.tryLabel">{s.tryLabel}</span>
+              <p class="try-text" data-i18n="seemsLike.d2.try">{s.d2.try}</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- d3 -->
+        <article class="distortion-card card fade-in">
+          <p class="thought-label" data-i18n="seemsLike.label">{s.label}</p>
+          <h2 class="thought-text" data-i18n="seemsLike.d3.thought">{s.d3.thought}</h2>
+          <div class="card-body">
+            <p class="validation-text" data-i18n="seemsLike.d3.validation">{s.d3.validation}</p>
+            <div class="reframe-block">
+              <span class="block-label" data-i18n="seemsLike.reframeLabel">{s.reframeLabel}</span>
+              <p data-i18n="seemsLike.d3.reframe">{s.d3.reframe}</p>
+            </div>
+            <div class="try-block">
+              <span class="block-label try-label" data-i18n="seemsLike.tryLabel">{s.tryLabel}</span>
+              <p class="try-text" data-i18n="seemsLike.d3.try">{s.d3.try}</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- d4 -->
+        <article class="distortion-card card fade-in">
+          <p class="thought-label" data-i18n="seemsLike.label">{s.label}</p>
+          <h2 class="thought-text" data-i18n="seemsLike.d4.thought">{s.d4.thought}</h2>
+          <div class="card-body">
+            <p class="validation-text" data-i18n="seemsLike.d4.validation">{s.d4.validation}</p>
+            <div class="reframe-block">
+              <span class="block-label" data-i18n="seemsLike.reframeLabel">{s.reframeLabel}</span>
+              <p data-i18n="seemsLike.d4.reframe">{s.d4.reframe}</p>
+            </div>
+            <div class="try-block">
+              <span class="block-label try-label" data-i18n="seemsLike.tryLabel">{s.tryLabel}</span>
+              <p class="try-text" data-i18n="seemsLike.d4.try">{s.d4.try}</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- d5 -->
+        <article class="distortion-card card fade-in">
+          <p class="thought-label" data-i18n="seemsLike.label">{s.label}</p>
+          <h2 class="thought-text" data-i18n="seemsLike.d5.thought">{s.d5.thought}</h2>
+          <div class="card-body">
+            <p class="validation-text" data-i18n="seemsLike.d5.validation">{s.d5.validation}</p>
+            <div class="reframe-block">
+              <span class="block-label" data-i18n="seemsLike.reframeLabel">{s.reframeLabel}</span>
+              <p data-i18n="seemsLike.d5.reframe">{s.d5.reframe}</p>
+            </div>
+            <div class="try-block">
+              <span class="block-label try-label" data-i18n="seemsLike.tryLabel">{s.tryLabel}</span>
+              <p class="try-text" data-i18n="seemsLike.d5.try">{s.d5.try}</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- d6 -->
+        <article class="distortion-card card fade-in">
+          <p class="thought-label" data-i18n="seemsLike.label">{s.label}</p>
+          <h2 class="thought-text" data-i18n="seemsLike.d6.thought">{s.d6.thought}</h2>
+          <div class="card-body">
+            <p class="validation-text" data-i18n="seemsLike.d6.validation">{s.d6.validation}</p>
+            <div class="reframe-block">
+              <span class="block-label" data-i18n="seemsLike.reframeLabel">{s.reframeLabel}</span>
+              <p data-i18n="seemsLike.d6.reframe">{s.d6.reframe}</p>
+            </div>
+            <div class="try-block">
+              <span class="block-label try-label" data-i18n="seemsLike.tryLabel">{s.tryLabel}</span>
+              <p class="try-text" data-i18n="seemsLike.d6.try">{s.d6.try}</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Закрывающий блок -->
+  <section class="close-section section">
+    <div class="container">
+      <div class="close-block card fade-in">
+        <p class="close-text" data-i18n="seemsLike.close.text">{s.close.text}</p>
+        <a href="/#resources" class="btn btn-primary" data-i18n="seemsLike.close.button">
+          {s.close.button}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Телефоны -->
+  <section class="hotlines-section section">
+    <div class="container">
+      <h2 data-i18n="seemsLike.hotlines.title">{s.hotlines.title}</h2>
+      <p class="text-secondary mb-xl" data-i18n="seemsLike.hotlines.text">{s.hotlines.text}</p>
+
+      <div class="hotlines-grid">
+        {featuredLines.map(country => (
+          <div class="hotline-card card fade-in">
+            <div
+              class="hotline-country"
+              data-name-ru={country.name}
+              data-name-en={(country as any).nameEn || country.name}
+              data-name-kk={(country as any).nameKk || country.name}
+            >{country.name}</div>
+            {country.lines.slice(0, 1).map(line => (
+              <a href={`tel:${line.phone.replace(/[^\d+]/g, '')}`} class="hotline-phone">
+                {line.phone}
+              </a>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-xl">
+        <a href="/#resources" class="hotlines-link" data-i18n="seemsLike.hotlines.link">
+          {s.hotlines.link}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Футер -->
+
+</Layout>
+
+<style>
+  /* Шапка */
+  .page-header {
+    padding: var(--space-lg) 0 0;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast);
+  }
+
+  .back-link:hover {
+    color: var(--color-accent);
+  }
+
+  /* Hero */
+  .hero-section {
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-title {
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    max-width: 640px;
+    margin: 0;
+  }
+
+  /* Intro */
+  .intro-section {
+    background: var(--color-bg-secondary);
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+  }
+
+  .intro-text {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    max-width: 680px;
+    margin: 0;
+    border-left: 3px solid var(--color-accent);
+    padding-left: var(--space-lg);
+  }
+
+  /* Сетка карточек */
+  .distortions-section {
+    padding-top: var(--space-3xl);
+  }
+
+  .distortions-grid {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  @media (min-width: 768px) {
+    .distortions-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* Карточка искажения */
+  .distortion-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    border-left: 3px solid transparent;
+    transition: border-color var(--transition-normal);
+  }
+
+  .distortion-card:hover {
+    border-left-color: var(--color-accent);
+  }
+
+  .thought-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .thought-text {
+    font-size: clamp(1.25rem, 3vw, 1.625rem);
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .validation-text {
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .reframe-block,
+  .try-block {
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .block-label {
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-sm);
+  }
+
+  .try-label {
+    color: var(--color-accent);
+  }
+
+  .reframe-block p {
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .try-text {
+    color: var(--color-accent);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* Закрывающий блок */
+  .close-section {
+    background: var(--color-bg-secondary);
+  }
+
+  .close-block {
+    text-align: center;
+    border-color: rgba(255, 160, 122, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xl);
+  }
+
+  .close-text {
+    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+    color: var(--color-text);
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Телефоны */
+  .hotlines-section h2 {
+    margin-bottom: var(--space-md);
+  }
+
+  .hotlines-grid {
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    margin-bottom: var(--space-lg);
+  }
+
+  .hotline-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
+  }
+
+  .hotline-country {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--color-text-muted);
+  }
+
+  .hotline-phone {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+
+  .hotline-phone:hover {
+    color: var(--color-accent-hover);
+  }
+
+  .hotlines-link {
+    font-weight: 500;
+    font-size: 0.9375rem;
+  }
+
+</style>

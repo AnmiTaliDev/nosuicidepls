@@ -1,0 +1,81 @@
+---
+import { locales } from '../i18n/config';
+---
+
+<div class="lang-switcher" role="navigation" aria-label="Language switcher">
+  {Object.values(locales).map(locale => (
+    <button
+      class="lang-btn"
+      data-lang-btn={locale.code}
+      aria-label={locale.name}
+      type="button"
+    >
+      {locale.code.toUpperCase()}
+    </button>
+  ))}
+</div>
+
+<style>
+  .lang-switcher {
+    position: fixed;
+    top: var(--space-lg);
+    right: var(--space-lg);
+    z-index: 100;
+    display: flex;
+    gap: 2px;
+    background: rgba(26, 22, 37, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 3px;
+  }
+
+  .lang-btn {
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 0.3rem 0.55rem;
+    border-radius: calc(var(--radius-md) - 2px);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    font-family: inherit;
+  }
+
+  .lang-btn:hover {
+    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  .lang-btn.active {
+    background: var(--color-accent);
+    color: #1a1625;
+  }
+</style>
+
+<script>
+  function initLangSwitcher() {
+    const buttons = document.querySelectorAll<HTMLButtonElement>('[data-lang-btn]');
+    const saved = localStorage.getItem('locale') || 'ru';
+
+    buttons.forEach(btn => {
+      if (btn.dataset.langBtn === saved) btn.classList.add('active');
+
+      btn.addEventListener('click', () => {
+        const locale = btn.dataset.langBtn!;
+        localStorage.setItem('locale', locale);
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.dispatchEvent(new CustomEvent('localeChanged', { detail: { locale } }));
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLangSwitcher);
+  } else {
+    initLangSwitcher();
+  }
+</script>

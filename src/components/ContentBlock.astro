@@ -2,13 +2,14 @@
 interface Props {
   text: string;
   highlight?: boolean;
+  i18nKey?: string;
 }
 
-const { text, highlight = false } = Astro.props;
+const { text, highlight = false, i18nKey } = Astro.props;
 ---
 
 <div class:list={['content-block', 'fade-in', { highlight }]}>
-  <p>{text}</p>
+  <p data-i18n={i18nKey}>{text}</p>
 </div>
 
 <style>

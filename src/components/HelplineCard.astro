@@ -2,18 +2,24 @@
 interface HelplineLine {
   phone: string;
   name: string;
+  nameEn?: string;
+  nameKk?: string;
   description?: string;
+  descEn?: string;
+  descKk?: string;
   hours?: string;
   free: boolean;
 }
 
 interface Props {
   countryName: string;
+  countryNameEn?: string;
+  countryNameKk?: string;
   lines: HelplineLine[];
   freeLabel?: string;
 }
 
-const { countryName, lines, freeLabel = 'бесплатно' } = Astro.props;
+const { countryName, countryNameEn, countryNameKk, lines, freeLabel = 'бесплатно' } = Astro.props;
 
 function formatPhoneForTel(phone: string): string {
   return phone.replace(/[^\d+]/g, '');
@@ -21,7 +27,12 @@ function formatPhoneForTel(phone: string): string {
 ---
 
 <div class="helpline-card card">
-  <h4 class="helpline-card-title">{countryName}</h4>
+  <h4
+    class="helpline-card-title"
+    data-name-ru={countryName}
+    data-name-en={countryNameEn || countryName}
+    data-name-kk={countryNameKk || countryName}
+  >{countryName}</h4>
   <ul class="helpline-list" role="list">
     {lines.map(line => (
       <li class="helpline-item">
@@ -30,15 +41,26 @@ function formatPhoneForTel(phone: string): string {
             {line.phone}
           </a>
           {line.free && (
-            <span class="helpline-item-free">{freeLabel}</span>
+            <span class="helpline-item-free" data-i18n="common.free">{freeLabel}</span>
           )}
         </div>
-        <div class="helpline-item-name">{line.name}</div>
+        <div
+          class="helpline-item-name"
+          data-name-ru={line.name}
+          data-name-en={line.nameEn || line.name}
+          data-name-kk={line.nameKk || line.name}
+        >{line.name}</div>
         {(line.description || line.hours) && (
           <div class="helpline-item-details">
-            {line.description && <span>{line.description}</span>}
+            {line.description && (
+              <span
+                data-name-ru={line.description}
+                data-name-en={line.descEn || line.description}
+                data-name-kk={line.descKk || line.description}
+              >{line.description}</span>
+            )}
             {line.description && line.hours && <span> · </span>}
-            {line.hours && <span>{line.hours}</span>}
+            {line.hours && <span data-i18n-hours={line.hours}>{line.hours}</span>}
           </div>
         )}
       </li>

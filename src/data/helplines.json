@@ -16,21 +16,33 @@
         "name": "Единый телефон доверия",
         "description": "для детей, подростков и родителей",
         "hours": "круглосуточно",
-        "free": true
+        "free": true,
+        "nameEn": "National Crisis Hotline",
+        "nameKk": "Ұлттық сенім телефоны",
+        "descEn": "for children, teens and parents",
+        "descKk": "балалар, жасөспірімдер мен ата-аналар үшін"
       },
       {
         "phone": "124",
         "name": "Короткий номер",
         "description": "только с мобильных, работает как 8-800-2000-122",
         "hours": "круглосуточно",
-        "free": true
+        "free": true,
+        "nameEn": "Short number",
+        "nameKk": "Қысқа нөмір",
+        "descEn": "mobile only, same as 8-800-2000-122",
+        "descKk": "тек мобильден, 8-800-2000-122 сияқты"
       },
       {
         "phone": "+7 (495) 989-50-50",
         "name": "Психологическая помощь МЧС России",
         "description": "совместно с факультетом психологии МГУ",
         "hours": "круглосуточно",
-        "free": false
+        "free": false,
+        "nameEn": "Psychological Help (Emergency Ministry)",
+        "nameKk": "Психологиялық көмек (ТЖМ)",
+        "descEn": "with MSU Psychology Faculty",
+        "descKk": "МҰУ психология факультетімен бірге"
       }
     ],
     "websites": [
@@ -39,7 +51,9 @@
         "name": "Центр экстренной психологической помощи МЧС"
       }
     ],
-    "chat": null
+    "chat": null,
+    "nameEn": "Russia",
+    "nameKk": "Ресей"
   },
   "UA": {
     "name": "Украина",
@@ -58,21 +72,33 @@
         "name": "Lifeline Ukraine",
         "description": "национальная линия предотвращения суицидов",
         "hours": "круглосуточно",
-        "free": true
+        "free": true,
+        "nameEn": "Lifeline Ukraine",
+        "nameKk": "Lifeline Ukraine",
+        "descEn": "national suicide prevention line",
+        "descKk": "суицидтің алдын алудың ұлттық желісі"
       },
       {
         "phone": "0 800 505 501",
         "name": "Линия психологической поддержки",
         "description": "Министерство здравоохранения",
         "hours": "круглосуточно",
-        "free": true
+        "free": true,
+        "nameEn": "Psychological Support Line",
+        "nameKk": "Психологиялық қолдау желісі",
+        "descEn": "Ministry of Health",
+        "descKk": "Денсаулық сақтау министрлігі"
       },
       {
         "phone": "116 111",
         "name": "La Strada",
         "description": "линия для детей и молодёжи",
         "hours": "круглосуточно",
-        "free": true
+        "free": true,
+        "nameEn": "La Strada",
+        "nameKk": "La Strada",
+        "descEn": "for children and youth",
+        "descKk": "балалар мен жастар үшін"
       }
     ],
     "websites": [
@@ -81,7 +107,9 @@
         "name": "Lifeline Ukraine"
       }
     ],
-    "chat": "https://lifelineukraine.com"
+    "chat": "https://lifelineukraine.com",
+    "nameEn": "Ukraine",
+    "nameKk": "Украина"
   },
   "BY": {
     "name": "Беларусь",
@@ -100,32 +128,50 @@
         "name": "Экстренная психологическая помощь",
         "description": "бесплатно для абонентов Белтелеком, А1, МТС, Лайф",
         "hours": "круглосуточно",
-        "free": true
+        "free": true,
+        "nameEn": "Emergency Psychological Help",
+        "nameKk": "Шұғыл психологиялық көмек",
+        "descEn": "free for Beltelecom, A1, MTS, Life",
+        "descKk": "Белтелеком, А1, МТС, Лайф абоненттері үшін тегін"
       },
       {
         "phone": "+375 (17) 352-44-44",
         "name": "Телефон доверия для взрослых",
         "description": "",
         "hours": "круглосуточно",
-        "free": false
+        "free": false,
+        "nameEn": "Adult Crisis Hotline",
+        "nameKk": "Ересектерге арналған сенім телефоны",
+        "descEn": "",
+        "descKk": ""
       },
       {
         "phone": "+375 (17) 263-03-03",
         "name": "Телефон доверия для детей и подростков",
         "description": "",
         "hours": "круглосуточно",
-        "free": false
+        "free": false,
+        "nameEn": "Children & Youth Crisis Hotline",
+        "nameKk": "Балалар мен жасөспірімдерге арналған сенім телефоны",
+        "descEn": "",
+        "descKk": ""
       },
       {
         "phone": "8 801 100 16 11",
         "name": "Республиканская детская телефонная линия",
         "description": "",
         "hours": "круглосуточно",
-        "free": true
+        "free": true,
+        "nameEn": "National Children's Hotline",
+        "nameKk": "Республикалық балалар телефон желісі",
+        "descEn": "",
+        "descKk": ""
       }
     ],
     "websites": [],
-    "chat": null
+    "chat": null,
+    "nameEn": "Belarus",
+    "nameKk": "Беларусь"
   },
   "KZ": {
     "name": "Казахстан",
@@ -144,18 +190,28 @@
         "name": "Национальный телефон доверия",
         "description": "для детей и молодёжи",
         "hours": "круглосуточно",
-        "free": true
+        "free": true,
+        "nameEn": "National Crisis Hotline",
+        "nameKk": "Ұлттық сенім телефоны",
+        "descEn": "for children and youth",
+        "descKk": "балалар мен жастар үшін"
       },
       {
         "phone": "111",
         "name": "Альтернативный номер",
         "description": "",
         "hours": "круглосуточно",
-        "free": true
+        "free": true,
+        "nameEn": "Alternative number",
+        "nameKk": "Балама нөмір",
+        "descEn": "",
+        "descKk": ""
       }
     ],
     "websites": [],
-    "chat": null
+    "chat": null,
+    "nameEn": "Kazakhstan",
+    "nameKk": "Қазақстан"
   },
   "UZ": {
     "name": "Узбекистан",
@@ -174,18 +230,28 @@
         "name": "Телефон доверия",
         "description": "",
         "hours": "",
-        "free": true
+        "free": true,
+        "nameEn": "Crisis Hotline",
+        "nameKk": "Сенім телефоны",
+        "descEn": "",
+        "descKk": ""
       },
       {
         "phone": "1197",
         "name": "Психологическая консультация",
         "description": "внутренний номер 4",
         "hours": "",
-        "free": true
+        "free": true,
+        "nameEn": "Psychological Consultation",
+        "nameKk": "Психологиялық кеңес",
+        "descEn": "extension 4",
+        "descKk": "4 ішкі нөмір"
       }
     ],
     "websites": [],
-    "chat": null
+    "chat": null,
+    "nameEn": "Uzbekistan",
+    "nameKk": "Өзбекстан"
   },
   "KG": {
     "name": "Кыргызстан",
@@ -204,11 +270,17 @@
         "name": "Телефон доверия",
         "description": "",
         "hours": "",
-        "free": true
+        "free": true,
+        "nameEn": "Crisis Hotline",
+        "nameKk": "Сенім телефоны",
+        "descEn": "",
+        "descKk": ""
       }
     ],
     "websites": [],
-    "chat": null
+    "chat": null,
+    "nameEn": "Kyrgyzstan",
+    "nameKk": "Қырғызстан"
   },
   "TJ": {
     "name": "Таджикистан",
@@ -227,11 +299,17 @@
         "name": "Телефон доверия",
         "description": "",
         "hours": "",
-        "free": false
+        "free": false,
+        "nameEn": "Crisis Hotline",
+        "nameKk": "Сенім телефоны",
+        "descEn": "",
+        "descKk": ""
       }
     ],
     "websites": [],
-    "chat": null
+    "chat": null,
+    "nameEn": "Tajikistan",
+    "nameKk": "Тәжікстан"
   },
   "TM": {
     "name": "Туркменистан",
@@ -250,11 +328,17 @@
         "name": "Служба психологической помощи",
         "description": "",
         "hours": "",
-        "free": true
+        "free": true,
+        "nameEn": "Psychological Help Service",
+        "nameKk": "Психологиялық көмек қызметі",
+        "descEn": "",
+        "descKk": ""
       }
     ],
     "websites": [],
-    "chat": null
+    "chat": null,
+    "nameEn": "Turkmenistan",
+    "nameKk": "Түрікменстан"
   },
   "AZ": {
     "name": "Азербайджан",
@@ -273,18 +357,28 @@
         "name": "Телефон доверия",
         "description": "из Баку",
         "hours": "",
-        "free": true
+        "free": true,
+        "nameEn": "Crisis Hotline",
+        "nameKk": "Сенім телефоны",
+        "descEn": "from Baku",
+        "descKk": "Бакудан"
       },
       {
         "phone": "012 860",
         "name": "Телефон доверия",
         "description": "с мобильных и из регионов",
         "hours": "",
-        "free": true
+        "free": true,
+        "nameEn": "Crisis Hotline",
+        "nameKk": "Сенім телефоны",
+        "descEn": "from mobile and regions",
+        "descKk": "мобильнен және өңірлерден"
       }
     ],
     "websites": [],
-    "chat": null
+    "chat": null,
+    "nameEn": "Azerbaijan",
+    "nameKk": "Әзербайжан"
   },
   "AM": {
     "name": "Армения",
@@ -303,11 +397,17 @@
         "name": "Телефон доверия",
         "description": "",
         "hours": "",
-        "free": true
+        "free": true,
+        "nameEn": "Crisis Hotline",
+        "nameKk": "Сенім телефоны",
+        "descEn": "",
+        "descKk": ""
       }
     ],
     "websites": [],
-    "chat": null
+    "chat": null,
+    "nameEn": "Armenia",
+    "nameKk": "Армения"
   },
   "GE": {
     "name": "Грузия",
@@ -326,11 +426,17 @@
         "name": "Горячая линия",
         "description": "",
         "hours": "",
-        "free": true
+        "free": true,
+        "nameEn": "Crisis Line",
+        "nameKk": "Дағдарыс желісі",
+        "descEn": "",
+        "descKk": ""
       }
     ],
     "websites": [],
-    "chat": null
+    "chat": null,
+    "nameEn": "Georgia",
+    "nameKk": "Грузия"
   },
   "MD": {
     "name": "Молдова",
@@ -349,14 +455,22 @@
         "name": "Телефон доверия",
         "description": "",
         "hours": "",
-        "free": true
+        "free": true,
+        "nameEn": "Crisis Hotline",
+        "nameKk": "Сенім телефоны",
+        "descEn": "",
+        "descKk": ""
       },
       {
         "phone": "116 111",
         "name": "Telefon Copilului",
         "description": "детская линия",
         "hours": "круглосуточно",
-        "free": true
+        "free": true,
+        "nameEn": "Telefon Copilului",
+        "nameKk": "Telefon Copilului",
+        "descEn": "children's line",
+        "descKk": "балалар желісі"
       }
     ],
     "websites": [
@@ -365,7 +479,9 @@
         "name": "Pentru Viata"
       }
     ],
-    "chat": "https://pentruviata.md"
+    "chat": "https://pentruviata.md",
+    "nameEn": "Moldova",
+    "nameKk": "Молдова"
   },
   "LV": {
     "name": "Латвия",
@@ -384,53 +500,83 @@
         "name": "Skalbes",
         "description": "кризисно-консультационный центр",
         "hours": "круглосуточно",
-        "free": true
+        "free": true,
+        "nameEn": "Skalbes",
+        "nameKk": "Skalbes",
+        "descEn": "crisis consultation center",
+        "descKk": "дағдарыс кеңес беру орталығы"
       },
       {
         "phone": "116 111",
         "name": "Детская и молодёжная линия",
         "description": "",
         "hours": "круглосуточно",
-        "free": true
+        "free": true,
+        "nameEn": "Children & Youth Line",
+        "nameKk": "Балалар мен жастар желісі",
+        "descEn": "",
+        "descKk": ""
       },
       {
         "phone": "116 006",
         "name": "Cietušajiem.lv",
         "description": "линия для жертв преступлений",
         "hours": "ежедневно 12:00–22:00",
-        "free": true
+        "free": true,
+        "nameEn": "Cietušajiem.lv",
+        "nameKk": "Cietušajiem.lv",
+        "descEn": "crime victims line",
+        "descKk": "қылмыс құрбандарына арналған желі"
       },
       {
         "phone": "22 04 52 25",
         "name": "Телефон предотвращения насилия",
         "description": "",
         "hours": "",
-        "free": false
+        "free": false,
+        "nameEn": "Anti-violence Hotline",
+        "nameKk": "Зорлық-зомбылыққа қарсы желі",
+        "descEn": "",
+        "descKk": ""
       },
       {
         "phone": "67 37 85 39",
         "name": "Центр Marta",
         "description": "поддержка женщин",
         "hours": "будни 10:00–18:00",
-        "free": false
+        "free": false,
+        "nameEn": "Marta Center",
+        "nameKk": "Marta орталығы",
+        "descEn": "support for women",
+        "descKk": "әйелдерге қолдау"
       },
       {
         "phone": "29 55 66 80",
         "name": "Центр Dardedze",
         "description": "если ребёнок подвергся насилию",
         "hours": "будни 9:00–17:00",
-        "free": false
+        "free": false,
+        "nameEn": "Dardedze Center",
+        "nameKk": "Dardedze орталығы",
+        "descEn": "if a child has been abused",
+        "descKk": "бала зорлыққа ұшыраған болса"
       },
       {
         "phone": "25 73 73 63",
         "name": "Ресурсный центр для подростков",
         "description": "также SMS и WhatsApp",
         "hours": "будни 12:00–16:00",
-        "free": false
+        "free": false,
+        "nameEn": "Youth Resource Center",
+        "nameKk": "Жасөспірімдер ресурс орталығы",
+        "descEn": "also SMS and WhatsApp",
+        "descKk": "сонымен қатар SMS және WhatsApp"
       }
     ],
     "websites": [],
-    "chat": null
+    "chat": null,
+    "nameEn": "Latvia",
+    "nameKk": "Латвия"
   },
   "LT": {
     "name": "Литва",
@@ -449,53 +595,83 @@
         "name": "Vilties Linija",
         "description": "для взрослых",
         "hours": "круглосуточно",
-        "free": true
+        "free": true,
+        "nameEn": "Vilties Linija",
+        "nameKk": "Vilties Linija",
+        "descEn": "for adults",
+        "descKk": "ересектер үшін"
       },
       {
         "phone": "116 111",
         "name": "Vaikų Linija",
         "description": "детская линия",
         "hours": "круглосуточно",
-        "free": true
+        "free": true,
+        "nameEn": "Vaikų Linija",
+        "nameKk": "Vaikų Linija",
+        "descEn": "children's line",
+        "descKk": "балалар желісі"
       },
       {
         "phone": "0 800 28888",
         "name": "Молодёжная линия",
         "description": "",
         "hours": "",
-        "free": true
+        "free": true,
+        "nameEn": "Youth Line",
+        "nameKk": "Жастар желісі",
+        "descEn": "",
+        "descKk": ""
       },
       {
         "phone": "0 800 800 20",
         "name": "Линия для пожилых",
         "description": "",
         "hours": "",
-        "free": true
+        "free": true,
+        "nameEn": "Elderly Line",
+        "nameKk": "Қарттарға арналған желі",
+        "descEn": "",
+        "descKk": ""
       },
       {
         "phone": "8 800 66366",
         "name": "Линия для женщин",
         "description": "",
         "hours": "",
-        "free": true
+        "free": true,
+        "nameEn": "Women's Line",
+        "nameKk": "Әйелдерге арналған желі",
+        "descEn": "",
+        "descKk": ""
       },
       {
         "phone": "8 604 11119",
         "name": "Nelik vienas",
         "description": "линия для мужчин",
         "hours": "",
-        "free": false
+        "free": false,
+        "nameEn": "Nelik vienas",
+        "nameKk": "Nelik vienas",
+        "descEn": "men's line",
+        "descKk": "ерлерге арналған желі"
       },
       {
         "phone": "8 670 00027",
         "name": "Альтернативная линия для мужчин",
         "description": "",
         "hours": "",
-        "free": false
+        "free": false,
+        "nameEn": "Men's Alternative Line",
+        "nameKk": "Ерлерге арналған балама желі",
+        "descEn": "",
+        "descKk": ""
       }
     ],
     "websites": [],
-    "chat": null
+    "chat": null,
+    "nameEn": "Lithuania",
+    "nameKk": "Литва"
   },
   "EE": {
     "name": "Эстония",
@@ -514,38 +690,60 @@
         "name": "Hingehoiu telefon",
         "description": "душевная помощь",
         "hours": "круглосуточно",
-        "free": true
+        "free": true,
+        "nameEn": "Hingehoiu telefon",
+        "nameKk": "Hingehoiu telefon",
+        "descEn": "emotional support",
+        "descKk": "эмоционалдық қолдау"
       },
       {
         "phone": "655 8088",
         "name": "Eluliin",
         "description": "эстонский язык",
         "hours": "6:00–18:00",
-        "free": false
+        "free": false,
+        "nameEn": "Eluliin",
+        "nameKk": "Eluliin",
+        "descEn": "Estonian language",
+        "descKk": "эстон тілі"
       },
       {
         "phone": "655 5688",
         "name": "Eluliin",
         "description": "русский язык",
         "hours": "6:00–18:00",
-        "free": false
+        "free": false,
+        "nameEn": "Eluliin",
+        "nameKk": "Eluliin",
+        "descEn": "Russian language",
+        "descKk": "орыс тілі"
       },
       {
         "phone": "116 111",
         "name": "Lasteabi",
         "description": "детская линия",
         "hours": "круглосуточно",
-        "free": true
+        "free": true,
+        "nameEn": "Lasteabi",
+        "nameKk": "Lasteabi",
+        "descEn": "children's line",
+        "descKk": "балалар желісі"
       },
       {
         "phone": "116 006",
         "name": "Линия для жертв преступлений",
         "description": "",
         "hours": "",
-        "free": true
+        "free": true,
+        "nameEn": "Crime Victims Line",
+        "nameKk": "Қылмыс құрбандарына арналған желі",
+        "descEn": "",
+        "descKk": ""
       }
     ],
     "websites": [],
-    "chat": null
+    "chat": null,
+    "nameEn": "Estonia",
+    "nameKk": "Эстония"
   }
 }

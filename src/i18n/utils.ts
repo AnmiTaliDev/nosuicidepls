@@ -1,5 +1,7 @@
 import { defaultLocale, defaultCountry, type Locale } from './config';
 import ruTranslations from './ru.json';
+import enTranslations from './en.json';
+import kkTranslations from './kk.json';
 import helplines from '../data/helplines.json';
 
 type Translations = typeof ruTranslations;
@@ -7,6 +9,8 @@ type TranslationKey = string;
 
 const translations: Record<string, Translations> = {
   ru: ruTranslations,
+  en: enTranslations as unknown as Translations,
+  kk: kkTranslations as unknown as Translations,
 };
 
 /**

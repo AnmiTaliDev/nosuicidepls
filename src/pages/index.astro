@@ -18,14 +18,16 @@ const allCountries = Object.values(helplines);
   <!-- Секция 1: Экран паузы -->
   <section id="pause" class="section-fullscreen pause-section" aria-label="Экран паузы">
     <div class="pause-content text-center">
-      <h1 class="pause-title">{t.pause.title}</h1>
-      <p class="pause-subtitle">{t.pause.subtitle}</p>
+      <h1 class="pause-title" data-i18n="pause.title">{t.pause.title}</h1>
+      <p class="pause-subtitle" data-i18n="pause.subtitle">{t.pause.subtitle}</p>
 
       <div class="pause-actions mt-xl">
         <button
           id="scroll-to-helpline"
           class="btn btn-primary btn-large"
           type="button"
+          data-i18n="common.helpline"
+          data-i18n-aria="common.helpline"
           aria-label={t.common.helpline}
         >
           {t.common.helpline}
@@ -34,6 +36,8 @@ const allCountries = Object.values(helplines);
           id="scroll-to-content"
           class="btn btn-secondary btn-large"
           type="button"
+          data-i18n="pause.ready"
+          data-i18n-aria="pause.ready"
           aria-label={t.pause.ready}
         >
           {t.pause.ready}
@@ -51,34 +55,37 @@ const allCountries = Object.values(helplines);
   <!-- Секция 2: Основной текст поддержки -->
   <section id="content" class="section content-section" aria-label="Текст поддержки">
     <div class="container">
-      <ContentBlock text={t.content.block1} />
-      <ContentBlock text={t.content.block2} />
-      <ContentBlock text={t.content.block3} />
-      <ContentBlock text={t.content.block4} />
-      <ContentBlock text={t.content.block5} />
-      <ContentBlock text={t.content.block6} highlight={true} />
-      <ContentBlock text={t.content.block7} />
-      <ContentBlock text={t.content.block8} />
-      <ContentBlock text={t.content.block9} />
-      <ContentBlock text={t.content.block10} highlight={true} />
+      <ContentBlock text={t.content.search} highlight={true} i18nKey="content.search" />
+      <ContentBlock text={t.content.block1} i18nKey="content.block1" />
+      <ContentBlock text={t.content.block2} i18nKey="content.block2" />
+      <ContentBlock text={t.content.block3} i18nKey="content.block3" />
+      <ContentBlock text={t.content.block4} i18nKey="content.block4" />
+      <ContentBlock text={t.content.block5} i18nKey="content.block5" />
+      <ContentBlock text={t.content.block6} highlight={true} i18nKey="content.block6" />
+      <ContentBlock text={t.content.block7} i18nKey="content.block7" />
+      <ContentBlock text={t.content.block8} i18nKey="content.block8" />
+      <ContentBlock text={t.content.block9} i18nKey="content.block9" />
+      <ContentBlock text={t.content.block10} highlight={true} i18nKey="content.block10" />
     </div>
   </section>
 
   <!-- Секция 3: Ресурсы и контакты -->
   <section id="resources" class="section resources-section" aria-label="Ресурсы и контакты">
     <div class="container">
-      <h2 class="resources-title">{t.resources.title}</h2>
+      <h2 class="resources-title" data-i18n="resources.title">{t.resources.title}</h2>
 
       <div class="resources-selector mb-xl">
         <CountrySelector label={t.resources.selectCountry} />
       </div>
 
-      <h3 class="resources-subtitle">{t.resources.allCountries}</h3>
+      <h3 class="resources-subtitle" data-i18n="resources.allCountries">{t.resources.allCountries}</h3>
 
       <div class="resources-grid">
         {allCountries.map(country => (
           <HelplineCard
             countryName={country.name}
+            countryNameEn={(country as any).nameEn}
+            countryNameKk={(country as any).nameKk}
             lines={country.lines}
             freeLabel={t.common.free}
           />
@@ -86,36 +93,27 @@ const allCountries = Object.values(helplines);
       </div>
 
       <div class="help-others card mt-2xl">
-        <h3 class="mb-md">{t.resources.helpOthers}</h3>
-        <p class="text-secondary mb-md">{t.resources.helpOthersText1}</p>
+        <h3 class="mb-md" data-i18n="resources.helpOthers">{t.resources.helpOthers}</h3>
+        <p class="text-secondary mb-md" data-i18n="resources.helpOthersText1">{t.resources.helpOthersText1}</p>
         <ul class="help-others-list">
-          <li>{t.resources.helpOthersText2}</li>
-          <li>{t.resources.helpOthersText3}</li>
-          <li>{t.resources.helpOthersText4}</li>
-          <li>{t.resources.helpOthersText5}</li>
-          <li>{t.resources.helpOthersText6}</li>
+          <li data-i18n="resources.helpOthersText2">{t.resources.helpOthersText2}</li>
+          <li data-i18n="resources.helpOthersText3">{t.resources.helpOthersText3}</li>
+          <li data-i18n="resources.helpOthersText4">{t.resources.helpOthersText4}</li>
+          <li data-i18n="resources.helpOthersText5">{t.resources.helpOthersText5}</li>
+          <li data-i18n="resources.helpOthersText6">{t.resources.helpOthersText6}</li>
         </ul>
+        <a href="/help-someone" class="help-others-link" data-i18n="resources.helpOthersLink">
+          {t.resources.helpOthersLink}
+        </a>
       </div>
+
+      <a href="/seems" class="nav-card fade-in mt-xl" data-i18n="resources.seemsLikeLink">
+        {t.resources.seemsLikeLink}
+        <svg class="nav-card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
   </section>
 
-  <!-- Футер -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <p>
-          <a href="https://github.com/AnmiTaliDev/nosuicidepls" target="_blank" rel="noopener noreferrer">
-            {t.footer.source}
-          </a>
-        </p>
-        <p class="text-muted">
-          {t.footer.developer}: <a href="https://github.com/AnmiTaliDev" target="_blank" rel="noopener noreferrer">AnmiTaliDev</a>
-          &nbsp;·&nbsp;
-          {t.footer.ideaAuthor}: GLOR
-        </p>
-      </div>
-    </div>
-  </footer>
 </Layout>
 
 <style>
@@ -232,20 +230,48 @@ const allCountries = Object.values(helplines);
     border-radius: 50%;
   }
 
-  /* Футер */
-  .footer {
-    background: var(--color-bg);
-    border-top: 1px solid var(--color-border);
-    padding: var(--space-xl) var(--space-lg);
+  .help-others-link {
+    display: inline-block;
+    margin-top: var(--space-lg);
+    font-weight: 500;
+    font-size: 0.9375rem;
   }
 
-  .footer-content {
-    text-align: center;
+  /* Навигационные карточки */
+  .nav-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    background: rgba(45, 40, 56, 0.5);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
   }
 
-  .footer-content p {
-    margin-bottom: var(--space-sm);
+  .nav-card:hover {
+    border-color: var(--color-accent);
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    text-decoration: none;
   }
+
+  .nav-card-arrow {
+    flex-shrink: 0;
+    opacity: 0.5;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .nav-card:hover .nav-card-arrow {
+    opacity: 1;
+    transform: translateX(3px);
+  }
+
 
   @media (prefers-reduced-motion: reduce) {
     .scroll-indicator {
