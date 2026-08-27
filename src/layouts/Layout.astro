@@ -1,266 +1,323 @@
 ---
-import '../styles/global.css';
-import LanguageSwitcher from '../components/LanguageSwitcher.astro';
-import ruTranslations from '../i18n/ru.json';
-import enTranslations from '../i18n/en.json';
-import kkTranslations from '../i18n/kk.json';
+import "../styles/global.css";
+import LanguageSwitcher from "../components/LanguageSwitcher.astro";
+import ruTranslations from "../i18n/ru.json";
+import enTranslations from "../i18n/en.json";
+import kkTranslations from "../i18n/kk.json";
 
 interface Props {
-  title: string;
-  description: string;
-  keywords?: string;
+    title: string;
+    description: string;
+    keywords?: string;
 }
 
 const { title, description, keywords } = Astro.props;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImageURL = new URL('/og-image.png', Astro.site);
-const allTranslations = { ru: ruTranslations, en: enTranslations, kk: kkTranslations };
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const canonicalURL = new URL(
+    Astro.url.pathname,
+    Astro.site || "https://nosuicidepls.org",
+);
+const ogImageURL = new URL(
+    "/og-image.png",
+    Astro.site || "https://nosuicidepls.org",
+);
+const allTranslations = {
+    ru: ruTranslations,
+    en: enTranslations,
+    kk: kkTranslations,
+};
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <title>{title}</title>
-  <meta name="description" content={description} />
-  {keywords && <meta name="keywords" content={keywords} />}
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        {keywords && <meta name="keywords" content={keywords} />}
 
-  <link rel="canonical" href={canonicalURL} />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="canonical" href={canonicalURL} />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+        />
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={canonicalURL} />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:image" content={ogImageURL} />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:site_name" content="Ты нужен. Останься." />
-  <meta property="og:locale" content="ru_RU" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImageURL} />
+        <meta property="og:site_name" content="Ты нужен. Останься." />
+        <meta property="og:locale" content="ru_RU" />
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={ogImageURL} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImageURL} />
 
-  <!-- Безопасность и конфиденциальность -->
-  <meta name="referrer" content="no-referrer" />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="AnmiTaliDev" />
-  <link rel="sitemap" href="/sitemap-index.xml" />
+        <meta name="referrer" content="no-referrer" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="AnmiTaliDev" />
+        <link rel="sitemap" href="/sitemap-index.xml" />
 
-  <!-- PWA -->
-  <meta name="theme-color" content="#1a1625" />
-  <link rel="manifest" href="/manifest.json" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Ты нужен" />
+        <meta name="theme-color" content="#231d19" />
+    </head>
+    <body>
+        <a href="#main-content" class="skip-link">Перейти к содержимому</a>
 
-  <!-- Структурированные данные -->
-  <script type="application/ld+json" set:html={JSON.stringify([
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Ты нужен. Останься.",
-      "url": Astro.site?.toString(),
-      "inLanguage": "ru",
-      "description": description
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": title,
-      "description": description,
-      "url": canonicalURL.toString(),
-      "inLanguage": "ru",
-      "isPartOf": {
-        "@type": "WebSite",
-        "name": "Ты нужен. Останься.",
-        "url": Astro.site?.toString()
-      },
-      "about": {
-        "@type": "Thing",
-        "name": "Психологическая поддержка и предотвращение суицида",
-        "description": "Телефоны доверия и ресурсы кризисной психологической помощи"
-      },
-      "audience": {
-        "@type": "Audience",
-        "audienceType": "People in crisis"
-      }
-    }
-  ])} />
+        <div class="lang-fixed">
+            <LanguageSwitcher />
+        </div>
 
-  <!-- Предзагрузка шрифтов -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-</head>
-<body>
-  <a href="#main-content" class="sr-only" data-i18n-aria-label="skip">Перейти к основному содержимому</a>
+        <main id="main-content">
+            <slot />
+        </main>
 
-  <LanguageSwitcher />
+        <footer class="footer">
+            <div class="container footer-inner">
+                <nav class="footer-nav" aria-label="Навигация">
+                    <a
+                        href="/"
+                        class:list={[{ active: currentPath === "/" }]}
+                        data-i18n="pause.title"
+                    >
+                        {ruTranslations.pause.title}
+                    </a>
+                    <a
+                        href="/seems"
+                        class:list={[{ active: currentPath === "/seems" }]}
+                        data-i18n="resources.seemsLikeLink"
+                    >
+                        {
+                            ruTranslations.resources.seemsLikeLink.replace(
+                                " →",
+                                "",
+                            )
+                        }
+                    </a>
+                    <a
+                        href="/help-someone"
+                        class:list={[
+                            { active: currentPath === "/help-someone" },
+                        ]}
+                        data-i18n="resources.helpOthers"
+                    >
+                        {ruTranslations.resources.helpOthers}
+                    </a>
+                </nav>
+                <div class="footer-meta">
+                    <span>
+                        <span data-i18n="footer.developer"
+                            >{ruTranslations.footer.developer}</span
+                        >:
+                        <a
+                            href="https://github.com/AnmiTaliDev"
+                            target="_blank"
+                            rel="noopener noreferrer">AnmiTaliDev</a
+                        >
+                    </span>
+                    <span>&middot;</span>
+                    <span>
+                        <span data-i18n="footer.ideaAuthor"
+                            >{ruTranslations.footer.ideaAuthor}</span
+                        >: GLOR
+                    </span>
+                    <span>&middot;</span>
+                    <a
+                        href="https://github.com/AnmiTaliDev/nosuicidepls"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-i18n="footer.source"
+                    >
+                        {ruTranslations.footer.source}
+                    </a>
+                </div>
+            </div>
+        </footer>
 
-  <main id="main-content">
-    <slot />
-  </main>
+        <script
+            id="__i18n_data"
+            type="application/json"
+            set:html={JSON.stringify(allTranslations)}
+        />
 
-  <footer class="site-footer">
-    <div class="container">
-      <nav class="site-footer-links">
-        <a href="/" data-i18n="pause.title">{ruTranslations.pause.title}</a>
-        <a href="/seems" data-i18n="resources.seemsLikeLink">{ruTranslations.resources.seemsLikeLink}</a>
-        <a href="/help-someone" data-i18n="resources.helpOthersLink">{ruTranslations.resources.helpOthersLink}</a>
-      </nav>
-      <p class="site-footer-credits">
-        <span data-i18n="footer.developer">{ruTranslations.footer.developer}</span>: <a href="https://github.com/AnmiTaliDev" target="_blank" rel="noopener noreferrer">AnmiTaliDev</a>
-        &nbsp;·&nbsp;
-        <span data-i18n="footer.ideaAuthor">{ruTranslations.footer.ideaAuthor}</span>: GLOR
-        &nbsp;·&nbsp;
-        <a href="https://github.com/AnmiTaliDev/nosuicidepls" target="_blank" rel="noopener noreferrer" data-i18n="footer.source">{ruTranslations.footer.source}</a>
-      </p>
-    </div>
-  </footer>
+        <script>
+            (function () {
+                const dataEl = document.getElementById("__i18n_data");
+                if (!dataEl) return;
+                const allTranslations = JSON.parse(dataEl.textContent || "{}");
 
-  <script id="__i18n_data" type="application/json" set:html={JSON.stringify(allTranslations)} />
+                function getVal(
+                    obj: Record<string, unknown>,
+                    key: string,
+                ): string | undefined {
+                    const result = key.split(".").reduce<unknown>((o, k) => {
+                        if (o && typeof o === "object")
+                            return (o as Record<string, unknown>)[k];
+                        return undefined;
+                    }, obj);
+                    return typeof result === "string" ? result : undefined;
+                }
 
-  <script>
-    // i18n client-side switching
-    (function () {
-      const dataEl = document.getElementById('__i18n_data');
-      if (!dataEl) return;
-      const allTranslations = JSON.parse(dataEl.textContent || '{}');
+                function applyLocale(locale: string) {
+                    const t = allTranslations[locale] || allTranslations["ru"];
+                    if (!t) return;
 
-      function getVal(obj: Record<string, unknown>, key: string): string | undefined {
-        const result = key.split('.').reduce<unknown>((o, k) => {
-          if (o && typeof o === 'object') return (o as Record<string, unknown>)[k];
-          return undefined;
-        }, obj);
-        return typeof result === 'string' ? result : undefined;
-      }
+                    document
+                        .querySelectorAll<HTMLElement>("[data-i18n]")
+                        .forEach((el) => {
+                            const val = getVal(t, el.dataset.i18n!);
+                            if (val !== undefined) el.textContent = val;
+                        });
 
-      function applyLocale(locale: string) {
-        const t = allTranslations[locale] || allTranslations['ru'];
-        if (!t) return;
+                    document
+                        .querySelectorAll<HTMLElement>("[data-i18n-aria]")
+                        .forEach((el) => {
+                            const val = getVal(t, el.dataset.i18nAria!);
+                            if (val !== undefined)
+                                el.setAttribute("aria-label", val);
+                        });
 
-        document.querySelectorAll<HTMLElement>('[data-i18n]').forEach(el => {
-          const val = getVal(t, el.dataset.i18n!);
-          if (val !== undefined) el.textContent = val;
-        });
+                    const nameKey = `data-name-${locale}`;
+                    document
+                        .querySelectorAll<HTMLElement>(`[${nameKey}]`)
+                        .forEach((el) => {
+                            const val = el.getAttribute(nameKey);
+                            if (val) el.textContent = val;
+                        });
 
-        document.querySelectorAll<HTMLElement>('[data-i18n-aria]').forEach(el => {
-          const val = getVal(t, el.dataset.i18nAria!);
-          if (val !== undefined) el.setAttribute('aria-label', val);
-        });
+                    const hoursMap = (t as Record<string, any>).common
+                        ?.hoursMap as Record<string, string> | undefined;
+                    if (hoursMap) {
+                        document
+                            .querySelectorAll<HTMLElement>("[data-i18n-hours]")
+                            .forEach((el) => {
+                                const ruHours = el.dataset.i18nHours!;
+                                el.textContent = hoursMap[ruHours] ?? ruHours;
+                            });
+                    }
 
-        // Multilingual name/desc in helpline cards
-        const nameKey = `data-name-${locale}`;
-        document.querySelectorAll<HTMLElement>(`[${nameKey}]`).forEach(el => {
-          const val = el.getAttribute(nameKey);
-          if (val) el.textContent = val;
-        });
+                    document.documentElement.lang = locale;
+                    const titleVal = getVal(t, "meta.title");
+                    if (titleVal) document.title = titleVal;
+                    const descMeta = document.querySelector<HTMLMetaElement>(
+                        'meta[name="description"]',
+                    );
+                    const descVal = getVal(t, "meta.description");
+                    if (descMeta && descVal) descMeta.content = descVal;
 
-        // Hours translation map
-        const hoursMap = (t as any).common?.hoursMap as Record<string, string> | undefined;
-        if (hoursMap) {
-          document.querySelectorAll<HTMLElement>('[data-i18n-hours]').forEach(el => {
-            const ruHours = el.dataset.i18nHours!;
-            el.textContent = hoursMap[ruHours] ?? ruHours;
-          });
-        }
+                    document
+                        .querySelectorAll<HTMLButtonElement>("[data-lang-btn]")
+                        .forEach((btn) => {
+                            btn.classList.toggle(
+                                "active",
+                                btn.dataset.langBtn === locale,
+                            );
+                        });
+                }
 
-        document.documentElement.lang = locale;
-        const titleVal = getVal(t, 'meta.title');
-        if (titleVal) document.title = titleVal;
-        const descMeta = document.querySelector<HTMLMetaElement>('meta[name="description"]');
-        const descVal = getVal(t, 'meta.description');
-        if (descMeta && descVal) descMeta.content = descVal;
-      }
+                function detectLocale(): string {
+                    const saved = localStorage.getItem("locale");
+                    if (
+                        saved &&
+                        (saved === "ru" || saved === "en" || saved === "kk")
+                    ) {
+                        return saved;
+                    }
 
-      const saved = localStorage.getItem('locale') || 'ru';
-      if (saved !== 'ru') applyLocale(saved);
+                    const navLangs = navigator.languages || [
+                        navigator.language || "",
+                    ];
+                    for (const lang of navLangs) {
+                        const code = lang.toLowerCase();
+                        if (code.startsWith("kk") || code.startsWith("kz"))
+                            return "kk";
+                        if (
+                            code.startsWith("ru") ||
+                            code.startsWith("be") ||
+                            code.startsWith("uk")
+                        )
+                            return "ru";
+                        if (code.startsWith("en")) return "en";
+                    }
 
-      document.addEventListener('localeChanged', (e: Event) => {
-        applyLocale((e as CustomEvent<{ locale: string }>).detail.locale);
-      });
-    })();
-  </script>
+                    return "ru";
+                }
 
-  <script>
-    // Инициализация анимации появления элементов при прокрутке
-    function initScrollAnimations() {
-      const fadeElements = document.querySelectorAll('.fade-in');
+                const initialLocale = detectLocale();
+                applyLocale(initialLocale);
 
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-            }
-          });
-        }, {
-          threshold: 0.1,
-          rootMargin: '0px 0px -50px 0px'
-        });
-
-        fadeElements.forEach(el => observer.observe(el));
-      } else {
-        // Фоллбэк для старых браузеров
-        fadeElements.forEach(el => el.classList.add('visible'));
-      }
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initScrollAnimations);
-    } else {
-      initScrollAnimations();
-    }
-  </script>
-</body>
+                document.addEventListener("localeChanged", (e: Event) => {
+                    applyLocale(
+                        (e as CustomEvent<{ locale: string }>).detail.locale,
+                    );
+                });
+            })();
+        </script>
+    </body>
 </html>
 
 <style>
-  .site-footer {
-    background: var(--color-bg);
-    border-top: 1px solid var(--color-border);
-    padding: var(--space-xl) var(--space-lg);
-  }
-  .site-footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-sm) var(--space-lg);
-    margin-bottom: var(--space-md);
-    justify-content: center;
-  }
-  .site-footer-links a {
-    font-size: 0.875rem;
-    color: var(--color-text-secondary);
-    text-decoration: none;
-  }
-  .site-footer-links a:hover {
-    color: var(--color-accent);
-    text-decoration: underline;
-  }
-  .site-footer-credits {
-    text-align: center;
-    font-size: 0.875rem;
-    color: var(--color-text-muted);
-    margin: 0;
-  }
-  .site-footer-credits a {
-    color: var(--color-text-secondary);
-    text-decoration: none;
-  }
-  .site-footer-credits a:hover {
-    color: var(--color-accent);
-    text-decoration: underline;
-  }
+    .lang-fixed {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        z-index: 10;
+    }
+
+    .footer {
+        margin-top: auto;
+        border-top: 1px solid var(--border);
+        padding: 4rem 0;
+    }
+
+    .footer-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .footer-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .footer-nav a {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        text-decoration: none;
+    }
+
+    .footer-nav a:hover,
+    .footer-nav a.active {
+        color: var(--text-primary);
+    }
+
+    .footer-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        font-size: var(--font-micro);
+        color: var(--text-muted);
+    }
+
+    .footer-meta a {
+        color: var(--text-muted);
+    }
+
+    .footer-meta a:hover {
+        color: var(--text-primary);
+    }
 </style>

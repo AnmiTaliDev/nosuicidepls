@@ -1,132 +1,153 @@
 ---
 interface HelplineLine {
-  phone: string;
-  name: string;
-  nameEn?: string;
-  nameKk?: string;
-  description?: string;
-  descEn?: string;
-  descKk?: string;
-  hours?: string;
-  free: boolean;
+    phone: string;
+    name: string;
+    nameEn?: string;
+    nameKk?: string;
+    description?: string;
+    descEn?: string;
+    descKk?: string;
+    hours?: string;
 }
 
 interface Props {
-  countryName: string;
-  countryNameEn?: string;
-  countryNameKk?: string;
-  lines: HelplineLine[];
-  freeLabel?: string;
+    countryName: string;
+    countryNameEn?: string;
+    countryNameKk?: string;
+    lines: HelplineLine[];
 }
 
-const { countryName, countryNameEn, countryNameKk, lines, freeLabel = 'бесплатно' } = Astro.props;
+const { countryName, countryNameEn, countryNameKk, lines } = Astro.props;
 
 function formatPhoneForTel(phone: string): string {
-  return phone.replace(/[^\d+]/g, '');
+    return phone.replace(/[^\d+]/g, "");
 }
 ---
 
-<div class="helpline-card card">
-  <h4
-    class="helpline-card-title"
-    data-name-ru={countryName}
-    data-name-en={countryNameEn || countryName}
-    data-name-kk={countryNameKk || countryName}
-  >{countryName}</h4>
-  <ul class="helpline-list" role="list">
-    {lines.map(line => (
-      <li class="helpline-item">
-        <div class="helpline-item-header">
-          <a href={`tel:${formatPhoneForTel(line.phone)}`} class="helpline-item-phone">
-            {line.phone}
-          </a>
-          {line.free && (
-            <span class="helpline-item-free" data-i18n="common.free">{freeLabel}</span>
-          )}
-        </div>
-        <div
-          class="helpline-item-name"
-          data-name-ru={line.name}
-          data-name-en={line.nameEn || line.name}
-          data-name-kk={line.nameKk || line.name}
-        >{line.name}</div>
-        {(line.description || line.hours) && (
-          <div class="helpline-item-details">
-            {line.description && (
-              <span
-                data-name-ru={line.description}
-                data-name-en={line.descEn || line.description}
-                data-name-kk={line.descKk || line.description}
-              >{line.description}</span>
-            )}
-            {line.description && line.hours && <span> · </span>}
-            {line.hours && <span data-i18n-hours={line.hours}>{line.hours}</span>}
-          </div>
-        )}
-      </li>
-    ))}
-  </ul>
+<div class="helpline-group">
+    <h3
+        class="country-title"
+        data-name-ru={countryName}
+        data-name-en={countryNameEn || countryName}
+        data-name-kk={countryNameKk || countryName}
+    >
+        {countryName}
+    </h3>
+
+    <div class="lines-list">
+        {
+            lines.map((line) => (
+                <div class="line-row">
+                    <div class="line-meta">
+                        <div
+                            class="line-name"
+                            data-name-ru={line.name}
+                            data-name-en={line.nameEn || line.name}
+                            data-name-kk={line.nameKk || line.name}
+                        >
+                            {line.name}
+                        </div>
+                        {(line.description || line.hours) && (
+                            <div class="line-sub">
+                                {line.description && (
+                                    <span
+                                        data-name-ru={line.description}
+                                        data-name-en={
+                                            line.descEn || line.description
+                                        }
+                                        data-name-kk={
+                                            line.descKk || line.description
+                                        }
+                                    >
+                                        {line.description}
+                                    </span>
+                                )}
+                                {line.description && line.hours && (
+                                    <span> &middot; </span>
+                                )}
+                                {line.hours && (
+                                    <span data-i18n-hours={line.hours}>
+                                        {line.hours}
+                                    </span>
+                                )}
+                            </div>
+                        )}
+                    </div>
+
+                    <a
+                        href={`tel:${formatPhoneForTel(line.phone)}`}
+                        class="line-phone"
+                    >
+                        {line.phone}
+                    </a>
+                </div>
+            ))
+        }
+    </div>
 </div>
 
 <style>
-  .helpline-card {
-    margin-bottom: var(--space-lg);
-  }
+    .helpline-group {
+        padding: 2.5rem 0;
+        border-bottom: 1px solid var(--border);
+    }
 
-  .helpline-card-title {
-    font-size: 1.125rem;
-    margin-bottom: var(--space-md);
-    color: var(--color-text);
-  }
+    .helpline-group:last-child {
+        border-bottom: none;
+    }
 
-  .helpline-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-  }
+    .country-title {
+        font-size: 1.15rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+    }
 
-  .helpline-item {
-    padding-bottom: var(--space-md);
-    border-bottom: 1px solid var(--color-border);
-  }
+    .lines-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
 
-  .helpline-item:last-child {
-    padding-bottom: 0;
-    border-bottom: none;
-  }
+    .line-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+    }
 
-  .helpline-item-header {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-xs);
-  }
+    @media (max-width: 540px) {
+        .line-row {
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+    }
 
-  .helpline-item-phone {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--color-accent);
-  }
+    .line-meta {
+        display: flex;
+        flex-direction: column;
+    }
 
-  .helpline-item-free {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--color-success);
-    background: rgba(152, 216, 200, 0.18);
-    padding: 0.25rem 0.6rem;
-    border-radius: var(--radius-full);
-  }
+    .line-name {
+        font-size: var(--font-body);
+        color: var(--text-primary);
+    }
 
-  .helpline-item-name {
-    font-size: 0.9375rem;
-    color: var(--color-text);
-    margin-bottom: var(--space-xs);
-  }
+    .line-sub {
+        font-size: var(--font-micro);
+        color: var(--text-muted);
+    }
 
-  .helpline-item-details {
-    font-size: 0.875rem;
-    color: var(--color-text-muted);
-  }
+    .line-phone {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .line-phone:hover {
+        color: var(--accent);
+        text-decoration: underline;
+    }
 </style>

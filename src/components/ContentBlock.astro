@@ -1,33 +1,36 @@
 ---
 interface Props {
-  text: string;
-  highlight?: boolean;
-  i18nKey?: string;
+    text: string;
+    highlight?: boolean;
+    i18nKey?: string;
 }
 
 const { text, highlight = false, i18nKey } = Astro.props;
 ---
 
-<div class:list={['content-block', 'fade-in', { highlight }]}>
-  <p data-i18n={i18nKey}>{text}</p>
+<div class:list={["statement", { "statement-accent": highlight }]}>
+    <p data-i18n={i18nKey}>{text}</p>
 </div>
 
 <style>
-  .content-block {
-    padding: var(--space-xl) 0;
-  }
+    .statement {
+        padding: 2rem 0;
+        border-bottom: 1px solid var(--border);
+    }
 
-  .content-block p {
-    font-size: clamp(1.15rem, 2.8vw, 1.45rem);
-    line-height: 1.85;
-    color: var(--color-text);
-    margin: 0;
-    font-weight: 400;
-  }
+    .statement:last-child {
+        border-bottom: none;
+    }
 
-  .content-block.highlight p {
-    color: var(--color-accent);
-    font-weight: 500;
-    text-shadow: 0 2px 12px rgba(255, 160, 122, 0.15);
-  }
+    .statement p {
+        font-size: var(--font-body);
+        line-height: 1.5;
+        color: var(--text-muted);
+        margin: 0;
+    }
+
+    .statement-accent p {
+        color: var(--text-primary);
+        font-weight: 500;
+    }
 </style>

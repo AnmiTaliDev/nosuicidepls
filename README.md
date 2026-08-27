@@ -6,58 +6,6 @@ A support website for people in crisis situations and those contemplating suicid
 
 This website was created to give individuals a pause, provide support through words, and offer contact information for professional help. It features a calm, minimalist design without distracting elements. The main focus is on content and the accessibility of helplines.
 
-### Features
-
-- **Pause screen** with a breathing animation (4 seconds inhale, 4 seconds exhale)
-- **Main support text** with smooth fade-in effects on scroll
-- **Automatic country detection** to display relevant local helplines
-- **Helplines** for 16 CIS and Baltic countries
-- **Sticky helpline banner** visible on all screens
-- **PWA support** for saving the site to a mobile device
-- **Full accessibility** (keyboard navigation, screen readers)
-- **Responsive design** with a mobile-first priority
-
-## Technologies
-
-- [Astro](https://astro.build/) — Static Site Generator
-- TypeScript
-- CSS (Framework-free)
-- Minimal JavaScript for interactivity
-
-## Project Structure
-
-
-```
-
-├── public/              # Static files
-│   ├── favicon.svg
-│   ├── manifest.json
-│   └── robots.txt
-├── src/
-│   ├── components/      # Astro components
-│   │   ├── BreathingCircle.astro   # Breathing animation
-│   │   ├── ContentBlock.astro      # Animated text block
-│   │   ├── CountrySelector.astro   # Country selection
-│   │   ├── HelplineBanner.astro    # Sticky banner
-│   │   └── HelplineCard.astro      # Helpline info card
-│   ├── data/
-│   │   └── helplines.json          # Helpline database
-│   ├── i18n/            # Localization
-│   │   ├── config.ts
-│   │   ├── ru.json
-│   │   └── utils.ts
-│   ├── layouts/
-│   │   └── Layout.astro
-│   ├── pages/
-│   │   └── index.astro
-│   └── styles/
-│       └── global.css
-├── astro.config.mjs
-├── package.json
-├── tsconfig.json
-
-```
-
 ## Getting Started
 
 ### Requirements

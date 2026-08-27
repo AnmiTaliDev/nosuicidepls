@@ -1,73 +1,139 @@
 ---
-import { getAllCountries } from '../i18n/utils';
+import { getAllCountries } from "../i18n/utils";
 
 interface Props {
-  label?: string;
-  id?: string;
+    label?: string;
+    id?: string;
 }
 
-const { label = 'Выбери страну', id = 'country-selector' } = Astro.props;
+const { label = "Выбери страну", id = "country-selector" } = Astro.props;
 const countries = getAllCountries();
 ---
 
-<div class="country-selector">
-  <label for={id} class="country-label" data-i18n="resources.selectCountry">{label}</label>
-  <select id={id} class="country-select" aria-label={label} data-i18n-aria="resources.selectCountry">
-    {countries.map(country => (
-      <option value={country.code}>
-        {country.name}
-      </option>
-    ))}
-  </select>
+<div class="country-filter-wrap">
+    <label
+        for={id}
+        class="country-filter-label"
+        data-i18n="resources.selectCountry">{label}</label
+    >
+    <div class="select-wrapper">
+        <select
+            id={id}
+            class="country-filter-select"
+            aria-label={label}
+            data-i18n-aria="resources.selectCountry"
+        >
+            {
+                countries.map((country) => (
+                    <option value={country.code}>{country.name}</option>
+                ))
+            }
+        </select>
+        <svg
+            class="select-chevron"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+        >
+            <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+    </div>
 </div>
 
 <style>
-  .country-selector {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-  }
+    .country-filter-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
 
-  .country-label {
-    font-size: 0.875rem;
-    color: var(--color-text-secondary);
-  }
+    .country-filter-label {
+        font-family: var(--font-display);
+        font-size: 0.8125rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-secondary);
+    }
 
-  .country-select {
-    min-width: 200px;
-  }
+    .select-wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+    .country-filter-select {
+        width: 100%;
+        appearance: none;
+        background: var(--bg-surface-elevated);
+        color: var(--text-primary);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-md);
+        padding: 0.75rem 2.5rem 0.75rem 1rem;
+        font-family: var(--font-sans);
+        font-size: 0.9375rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all var(--transition-fast);
+    }
+
+    .country-filter-select:hover {
+        border-color: var(--border-medium);
+        background: var(--bg-surface-hover);
+    }
+
+    .country-filter-select:focus-visible {
+        outline: 2px solid var(--accent-primary);
+        outline-offset: 2px;
+        border-color: var(--accent-primary);
+    }
+
+    .select-chevron {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-muted);
+        pointer-events: none;
+    }
 </style>
 
 <script>
-  function initCountrySelector() {
-    const selector = document.getElementById('country-selector') as HTMLSelectElement;
-    if (!selector) return;
+    function initCountrySelector() {
+        const selector = document.getElementById(
+            "country-selector",
+        ) as HTMLSelectElement;
+        if (!selector) return;
 
-    // Устанавливаем сохранённое значение
-    const saved = localStorage.getItem('userCountry');
-    if (saved) {
-      selector.value = saved;
+        const saved = localStorage.getItem("userCountry");
+        if (saved) {
+            selector.value = saved;
+        }
+
+        selector.addEventListener("change", () => {
+            const country = selector.value;
+            localStorage.setItem("userCountry", country);
+            window.dispatchEvent(
+                new CustomEvent("countryChanged", { detail: { country } }),
+            );
+        });
+
+        window.addEventListener("countryChanged", ((
+            event: CustomEvent<{ country: string }>,
+        ) => {
+            selector.value = event.detail.country;
+        }) as EventListener);
     }
 
-    selector.addEventListener('change', () => {
-      const country = selector.value;
-      localStorage.setItem('userCountry', country);
-
-      // Оповещаем другие компоненты
-      window.dispatchEvent(new CustomEvent('countryChanged', {
-        detail: { country }
-      }));
-    });
-
-    // Слушаем изменения от других компонентов
-    window.addEventListener('countryChanged', ((event: CustomEvent<{ country: string }>) => {
-      selector.value = event.detail.country;
-    }) as EventListener);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCountrySelector);
-  } else {
-    initCountrySelector();
-  }
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initCountrySelector);
+    } else {
+        initCountrySelector();
+    }
 </script>

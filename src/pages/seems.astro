@@ -1,426 +1,384 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { getTranslations } from '../i18n/utils';
-import helplines from '../data/helplines.json';
+import Layout from "../layouts/Layout.astro";
+import { getTranslations } from "../i18n/utils";
+import helplines from "../data/helplines.json";
 
 const t = getTranslations();
 const s = t.seemsLike;
 
-const featuredCountries = ['RU', 'KZ', 'UA'] as const;
+const featuredCountries = ["RU", "KZ", "UA"] as const;
 const featuredLines = featuredCountries
-  .map(code => (helplines as Record<string, typeof helplines.RU>)[code])
-  .filter(Boolean);
-
-const distortions = ['d1', 'd2', 'd3', 'd4', 'd5', 'd6'] as const;
+    .map((code) => (helplines as Record<string, typeof helplines.RU>)[code])
+    .filter(Boolean);
 ---
 
 <Layout title={s.meta.title} description={s.meta.description}>
+    <div class="container page-container">
+        <header class="page-header">
+            <a href="/" class="back-link" data-i18n="seemsLike.hero.back"
+                >{s.hero.back}</a
+            >
+            <h1 class="page-title" data-i18n="seemsLike.hero.title">
+                {s.hero.title}
+            </h1>
+            <p class="page-subtitle" data-i18n="seemsLike.hero.subtitle">
+                {s.hero.subtitle}
+            </p>
+        </header>
 
-  <!-- Шапка -->
-  <header class="page-header">
-    <div class="container">
-      <a href="/" class="back-link" data-i18n="seemsLike.hero.back">{s.hero.back}</a>
+        <div class="intro-block">
+            <p data-i18n="seemsLike.intro">{s.intro}</p>
+        </div>
+
+        <div class="distortions-list">
+            <article class="distortion-item">
+                <h2 class="distortion-title" data-i18n="seemsLike.d1.thought">
+                    {s.d1.thought}
+                </h2>
+                <div class="distortion-body">
+                    <p
+                        class="distortion-validation"
+                        data-i18n="seemsLike.d1.validation"
+                    >
+                        {s.d1.validation}
+                    </p>
+                    <div class="distortion-reframe">
+                        <span class="label" data-i18n="seemsLike.reframeLabel"
+                            >{s.reframeLabel}:</span
+                        >
+                        <p data-i18n="seemsLike.d1.reframe">{s.d1.reframe}</p>
+                    </div>
+                    <div class="distortion-try">
+                        <span class="label" data-i18n="seemsLike.tryLabel"
+                            >{s.tryLabel}:</span
+                        >
+                        <p data-i18n="seemsLike.d1.try">{s.d1.try}</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="distortion-item">
+                <h2 class="distortion-title" data-i18n="seemsLike.d2.thought">
+                    {s.d2.thought}
+                </h2>
+                <div class="distortion-body">
+                    <p
+                        class="distortion-validation"
+                        data-i18n="seemsLike.d2.validation"
+                    >
+                        {s.d2.validation}
+                    </p>
+                    <div class="distortion-reframe">
+                        <span class="label" data-i18n="seemsLike.reframeLabel"
+                            >{s.reframeLabel}:</span
+                        >
+                        <p data-i18n="seemsLike.d2.reframe">{s.d2.reframe}</p>
+                    </div>
+                    <div class="distortion-try">
+                        <span class="label" data-i18n="seemsLike.tryLabel"
+                            >{s.tryLabel}:</span
+                        >
+                        <p data-i18n="seemsLike.d2.try">{s.d2.try}</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="distortion-item">
+                <h2 class="distortion-title" data-i18n="seemsLike.d3.thought">
+                    {s.d3.thought}
+                </h2>
+                <div class="distortion-body">
+                    <p
+                        class="distortion-validation"
+                        data-i18n="seemsLike.d3.validation"
+                    >
+                        {s.d3.validation}
+                    </p>
+                    <div class="distortion-reframe">
+                        <span class="label" data-i18n="seemsLike.reframeLabel"
+                            >{s.reframeLabel}:</span
+                        >
+                        <p data-i18n="seemsLike.d3.reframe">{s.d3.reframe}</p>
+                    </div>
+                    <div class="distortion-try">
+                        <span class="label" data-i18n="seemsLike.tryLabel"
+                            >{s.tryLabel}:</span
+                        >
+                        <p data-i18n="seemsLike.d3.try">{s.d3.try}</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="distortion-item">
+                <h2 class="distortion-title" data-i18n="seemsLike.d4.thought">
+                    {s.d4.thought}
+                </h2>
+                <div class="distortion-body">
+                    <p
+                        class="distortion-validation"
+                        data-i18n="seemsLike.d4.validation"
+                    >
+                        {s.d4.validation}
+                    </p>
+                    <div class="distortion-reframe">
+                        <span class="label" data-i18n="seemsLike.reframeLabel"
+                            >{s.reframeLabel}:</span
+                        >
+                        <p data-i18n="seemsLike.d4.reframe">{s.d4.reframe}</p>
+                    </div>
+                    <div class="distortion-try">
+                        <span class="label" data-i18n="seemsLike.tryLabel"
+                            >{s.tryLabel}:</span
+                        >
+                        <p data-i18n="seemsLike.d4.try">{s.d4.try}</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="distortion-item">
+                <h2 class="distortion-title" data-i18n="seemsLike.d5.thought">
+                    {s.d5.thought}
+                </h2>
+                <div class="distortion-body">
+                    <p
+                        class="distortion-validation"
+                        data-i18n="seemsLike.d5.validation"
+                    >
+                        {s.d5.validation}
+                    </p>
+                    <div class="distortion-reframe">
+                        <span class="label" data-i18n="seemsLike.reframeLabel"
+                            >{s.reframeLabel}:</span
+                        >
+                        <p data-i18n="seemsLike.d5.reframe">{s.d5.reframe}</p>
+                    </div>
+                    <div class="distortion-try">
+                        <span class="label" data-i18n="seemsLike.tryLabel"
+                            >{s.tryLabel}:</span
+                        >
+                        <p data-i18n="seemsLike.d5.try">{s.d5.try}</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="distortion-item">
+                <h2 class="distortion-title" data-i18n="seemsLike.d6.thought">
+                    {s.d6.thought}
+                </h2>
+                <div class="distortion-body">
+                    <p
+                        class="distortion-validation"
+                        data-i18n="seemsLike.d6.validation"
+                    >
+                        {s.d6.validation}
+                    </p>
+                    <div class="distortion-reframe">
+                        <span class="label" data-i18n="seemsLike.reframeLabel"
+                            >{s.reframeLabel}:</span
+                        >
+                        <p data-i18n="seemsLike.d6.reframe">{s.d6.reframe}</p>
+                    </div>
+                    <div class="distortion-try">
+                        <span class="label" data-i18n="seemsLike.tryLabel"
+                            >{s.tryLabel}:</span
+                        >
+                        <p data-i18n="seemsLike.d6.try">{s.d6.try}</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="conclusion-block">
+            <p class="conclusion-text" data-i18n="seemsLike.close.text">
+                {s.close.text}
+            </p>
+            <a
+                href="/#resources"
+                class="btn btn-accent"
+                data-i18n="seemsLike.close.button"
+            >
+                {s.close.button}
+            </a>
+        </div>
+
+        <div class="hotlines-block">
+            <h2 data-i18n="seemsLike.hotlines.title">{s.hotlines.title}</h2>
+            <p data-i18n="seemsLike.hotlines.text">{s.hotlines.text}</p>
+            <div class="hotlines-simple">
+                {
+                    featuredLines.map((country) => (
+                        <div class="hotline-simple-row">
+                            <span
+                                data-name-ru={country.name}
+                                data-name-en={
+                                    (country as any).nameEn || country.name
+                                }
+                                data-name-kk={
+                                    (country as any).nameKk || country.name
+                                }
+                            >
+                                {country.name}:
+                            </span>
+                            {country.lines.slice(0, 1).map((line) => (
+                                <a
+                                    href={`tel:${line.phone.replace(/[^\d+]/g, "")}`}
+                                    class="phone-link"
+                                >
+                                    {line.phone}
+                                </a>
+                            ))}
+                        </div>
+                    ))
+                }
+            </div>
+            <div class="all-link-wrap">
+                <a href="/#resources" data-i18n="seemsLike.hotlines.link">
+                    {s.hotlines.link}
+                </a>
+            </div>
+        </div>
     </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero-section section">
-    <div class="container">
-      <span class="hero-tag" data-i18n="seemsLike.hero.tag">{s.hero.tag}</span>
-      <h1 class="hero-title" data-i18n="seemsLike.hero.title">{s.hero.title}</h1>
-      <p class="hero-subtitle" data-i18n="seemsLike.hero.subtitle">{s.hero.subtitle}</p>
-    </div>
-  </section>
-
-  <!-- Intro -->
-  <section class="intro-section section">
-    <div class="container">
-      <p class="intro-text" data-i18n="seemsLike.intro">{s.intro}</p>
-    </div>
-  </section>
-
-  <!-- Карточки -->
-  <section class="distortions-section section">
-    <div class="container">
-      <div class="distortions-grid">
-
-        <!-- d1 -->
-        <article class="distortion-card card fade-in">
-          <p class="thought-label" data-i18n="seemsLike.label">{s.label}</p>
-          <h2 class="thought-text" data-i18n="seemsLike.d1.thought">{s.d1.thought}</h2>
-          <div class="card-body">
-            <p class="validation-text" data-i18n="seemsLike.d1.validation">{s.d1.validation}</p>
-            <div class="reframe-block">
-              <span class="block-label" data-i18n="seemsLike.reframeLabel">{s.reframeLabel}</span>
-              <p data-i18n="seemsLike.d1.reframe">{s.d1.reframe}</p>
-            </div>
-            <div class="try-block">
-              <span class="block-label try-label" data-i18n="seemsLike.tryLabel">{s.tryLabel}</span>
-              <p class="try-text" data-i18n="seemsLike.d1.try">{s.d1.try}</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- d2 -->
-        <article class="distortion-card card fade-in">
-          <p class="thought-label" data-i18n="seemsLike.label">{s.label}</p>
-          <h2 class="thought-text" data-i18n="seemsLike.d2.thought">{s.d2.thought}</h2>
-          <div class="card-body">
-            <p class="validation-text" data-i18n="seemsLike.d2.validation">{s.d2.validation}</p>
-            <div class="reframe-block">
-              <span class="block-label" data-i18n="seemsLike.reframeLabel">{s.reframeLabel}</span>
-              <p data-i18n="seemsLike.d2.reframe">{s.d2.reframe}</p>
-            </div>
-            <div class="try-block">
-              <span class="block-label try-label" data-i18n="seemsLike.tryLabel">{s.tryLabel}</span>
-              <p class="try-text" data-i18n="seemsLike.d2.try">{s.d2.try}</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- d3 -->
-        <article class="distortion-card card fade-in">
-          <p class="thought-label" data-i18n="seemsLike.label">{s.label}</p>
-          <h2 class="thought-text" data-i18n="seemsLike.d3.thought">{s.d3.thought}</h2>
-          <div class="card-body">
-            <p class="validation-text" data-i18n="seemsLike.d3.validation">{s.d3.validation}</p>
-            <div class="reframe-block">
-              <span class="block-label" data-i18n="seemsLike.reframeLabel">{s.reframeLabel}</span>
-              <p data-i18n="seemsLike.d3.reframe">{s.d3.reframe}</p>
-            </div>
-            <div class="try-block">
-              <span class="block-label try-label" data-i18n="seemsLike.tryLabel">{s.tryLabel}</span>
-              <p class="try-text" data-i18n="seemsLike.d3.try">{s.d3.try}</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- d4 -->
-        <article class="distortion-card card fade-in">
-          <p class="thought-label" data-i18n="seemsLike.label">{s.label}</p>
-          <h2 class="thought-text" data-i18n="seemsLike.d4.thought">{s.d4.thought}</h2>
-          <div class="card-body">
-            <p class="validation-text" data-i18n="seemsLike.d4.validation">{s.d4.validation}</p>
-            <div class="reframe-block">
-              <span class="block-label" data-i18n="seemsLike.reframeLabel">{s.reframeLabel}</span>
-              <p data-i18n="seemsLike.d4.reframe">{s.d4.reframe}</p>
-            </div>
-            <div class="try-block">
-              <span class="block-label try-label" data-i18n="seemsLike.tryLabel">{s.tryLabel}</span>
-              <p class="try-text" data-i18n="seemsLike.d4.try">{s.d4.try}</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- d5 -->
-        <article class="distortion-card card fade-in">
-          <p class="thought-label" data-i18n="seemsLike.label">{s.label}</p>
-          <h2 class="thought-text" data-i18n="seemsLike.d5.thought">{s.d5.thought}</h2>
-          <div class="card-body">
-            <p class="validation-text" data-i18n="seemsLike.d5.validation">{s.d5.validation}</p>
-            <div class="reframe-block">
-              <span class="block-label" data-i18n="seemsLike.reframeLabel">{s.reframeLabel}</span>
-              <p data-i18n="seemsLike.d5.reframe">{s.d5.reframe}</p>
-            </div>
-            <div class="try-block">
-              <span class="block-label try-label" data-i18n="seemsLike.tryLabel">{s.tryLabel}</span>
-              <p class="try-text" data-i18n="seemsLike.d5.try">{s.d5.try}</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- d6 -->
-        <article class="distortion-card card fade-in">
-          <p class="thought-label" data-i18n="seemsLike.label">{s.label}</p>
-          <h2 class="thought-text" data-i18n="seemsLike.d6.thought">{s.d6.thought}</h2>
-          <div class="card-body">
-            <p class="validation-text" data-i18n="seemsLike.d6.validation">{s.d6.validation}</p>
-            <div class="reframe-block">
-              <span class="block-label" data-i18n="seemsLike.reframeLabel">{s.reframeLabel}</span>
-              <p data-i18n="seemsLike.d6.reframe">{s.d6.reframe}</p>
-            </div>
-            <div class="try-block">
-              <span class="block-label try-label" data-i18n="seemsLike.tryLabel">{s.tryLabel}</span>
-              <p class="try-text" data-i18n="seemsLike.d6.try">{s.d6.try}</p>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Закрывающий блок -->
-  <section class="close-section section">
-    <div class="container">
-      <div class="close-block card fade-in">
-        <p class="close-text" data-i18n="seemsLike.close.text">{s.close.text}</p>
-        <a href="/#resources" class="btn btn-primary" data-i18n="seemsLike.close.button">
-          {s.close.button}
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Телефоны -->
-  <section class="hotlines-section section">
-    <div class="container">
-      <h2 data-i18n="seemsLike.hotlines.title">{s.hotlines.title}</h2>
-      <p class="text-secondary mb-xl" data-i18n="seemsLike.hotlines.text">{s.hotlines.text}</p>
-
-      <div class="hotlines-grid">
-        {featuredLines.map(country => (
-          <div class="hotline-card card fade-in">
-            <div
-              class="hotline-country"
-              data-name-ru={country.name}
-              data-name-en={(country as any).nameEn || country.name}
-              data-name-kk={(country as any).nameKk || country.name}
-            >{country.name}</div>
-            {country.lines.slice(0, 1).map(line => (
-              <a href={`tel:${line.phone.replace(/[^\d+]/g, '')}`} class="hotline-phone">
-                {line.phone}
-              </a>
-            ))}
-          </div>
-        ))}
-      </div>
-
-      <div class="text-center mt-xl">
-        <a href="/#resources" class="hotlines-link" data-i18n="seemsLike.hotlines.link">
-          {s.hotlines.link}
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Футер -->
-
 </Layout>
 
 <style>
-  /* Шапка */
-  .page-header {
-    padding: var(--space-lg) 0 0;
-  }
-
-  .back-link {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-xs);
-    font-size: 0.9375rem;
-    color: var(--color-text-muted);
-    transition: color var(--transition-fast);
-  }
-
-  .back-link:hover {
-    color: var(--color-accent);
-  }
-
-  /* Hero */
-  .hero-section {
-    padding-top: var(--space-2xl);
-    padding-bottom: var(--space-2xl);
-  }
-
-  .hero-tag {
-    display: inline-block;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    background: var(--color-accent-soft);
-    padding: 0.3rem 0.75rem;
-    border-radius: var(--radius-full);
-    margin-bottom: var(--space-lg);
-  }
-
-  .hero-title {
-    margin-bottom: var(--space-lg);
-  }
-
-  .hero-subtitle {
-    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
-    color: var(--color-text-secondary);
-    line-height: 1.7;
-    max-width: 640px;
-    margin: 0;
-  }
-
-  /* Intro */
-  .intro-section {
-    background: var(--color-bg-secondary);
-    padding-top: var(--space-2xl);
-    padding-bottom: var(--space-2xl);
-  }
-
-  .intro-text {
-    font-size: 1.125rem;
-    color: var(--color-text-secondary);
-    line-height: 1.8;
-    max-width: 680px;
-    margin: 0;
-    border-left: 3px solid var(--color-accent);
-    padding-left: var(--space-lg);
-  }
-
-  /* Сетка карточек */
-  .distortions-section {
-    padding-top: var(--space-3xl);
-  }
-
-  .distortions-grid {
-    display: grid;
-    gap: var(--space-xl);
-  }
-
-  @media (min-width: 768px) {
-    .distortions-grid {
-      grid-template-columns: 1fr 1fr;
+    .page-container {
+        padding: 6rem 1.5rem 8rem;
     }
-  }
 
-  /* Карточка искажения */
-  .distortion-card {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-    border-left: 3px solid transparent;
-    transition: border-color var(--transition-normal);
-  }
+    .page-header {
+        margin-bottom: 3.5rem;
+    }
 
-  .distortion-card:hover {
-    border-left-color: var(--color-accent);
-  }
+    .back-link {
+        display: inline-block;
+        font-size: var(--font-micro);
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+        text-decoration: none;
+    }
 
-  .thought-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-    margin: 0;
-  }
+    .back-link:hover {
+        color: var(--text-primary);
+    }
 
-  .thought-text {
-    font-size: clamp(1.25rem, 3vw, 1.625rem);
-    font-weight: 700;
-    color: var(--color-text);
-    line-height: 1.3;
-    margin: 0;
-  }
+    .page-title {
+        margin-bottom: 1rem;
+    }
 
-  .card-body {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-  }
+    .page-subtitle {
+        font-size: 1.15rem;
+        line-height: 1.5;
+        margin: 0;
+    }
 
-  .validation-text {
-    color: var(--color-text-secondary);
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    margin: 0;
-  }
+    .intro-block {
+        padding: 2rem 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 4rem;
+    }
 
-  .reframe-block,
-  .try-block {
-    padding-top: var(--space-md);
-    border-top: 1px solid var(--color-border);
-  }
+    .distortions-list {
+        display: flex;
+        flex-direction: column;
+        gap: 3.5rem;
+        margin-bottom: 5rem;
+    }
 
-  .block-label {
-    display: block;
-    font-size: 0.6875rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-    margin-bottom: var(--space-sm);
-  }
+    .distortion-item {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        padding-bottom: 3.5rem;
+        border-bottom: 1px solid var(--border);
+    }
 
-  .try-label {
-    color: var(--color-accent);
-  }
+    .distortion-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
 
-  .reframe-block p {
-    color: var(--color-text-secondary);
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    margin: 0;
-  }
+    .distortion-title {
+        font-size: 1.4rem;
+        color: var(--text-primary);
+    }
 
-  .try-text {
-    color: var(--color-accent);
-    font-size: 0.9375rem;
-    font-weight: 500;
-    line-height: 1.65;
-    margin: 0;
-  }
+    .distortion-body {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
 
-  /* Закрывающий блок */
-  .close-section {
-    background: var(--color-bg-secondary);
-  }
+    .distortion-validation {
+        color: var(--text-primary);
+        margin: 0;
+    }
 
-  .close-block {
-    text-align: center;
-    border-color: rgba(255, 160, 122, 0.3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-xl);
-  }
+    .distortion-reframe,
+    .distortion-try {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
 
-  .close-text {
-    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
-    color: var(--color-text);
-    font-weight: 500;
-    margin: 0;
-    line-height: 1.5;
-  }
+    .label {
+        font-size: var(--font-micro);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-muted);
+        font-weight: 500;
+    }
 
-  /* Телефоны */
-  .hotlines-section h2 {
-    margin-bottom: var(--space-md);
-  }
+    .distortion-reframe p,
+    .distortion-try p {
+        color: var(--text-muted);
+        margin: 0;
+    }
 
-  .hotlines-grid {
-    display: grid;
-    gap: var(--space-md);
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    margin-bottom: var(--space-lg);
-  }
+    .conclusion-block {
+        padding: 3.5rem 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 4rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.75rem;
+    }
 
-  .hotline-card {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-    padding: var(--space-lg);
-  }
+    .conclusion-text {
+        font-size: 1.25rem;
+        color: var(--text-primary);
+        margin: 0;
+    }
 
-  .hotline-country {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    color: var(--color-text-muted);
-  }
+    .hotlines-block h2 {
+        margin-bottom: 0.75rem;
+    }
 
-  .hotline-phone {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--color-accent);
-  }
+    .hotlines-simple {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin: 1.5rem 0;
+    }
 
-  .hotline-phone:hover {
-    color: var(--color-accent-hover);
-  }
+    .hotline-simple-row {
+        display: flex;
+        gap: 0.5rem;
+        font-size: 1rem;
+    }
 
-  .hotlines-link {
-    font-weight: 500;
-    font-size: 0.9375rem;
-  }
+    .hotline-simple-row span {
+        color: var(--text-muted);
+    }
 
+    .phone-link {
+        color: var(--text-primary);
+        font-weight: 500;
+    }
+
+    .all-link-wrap {
+        margin-top: 1.5rem;
+    }
 </style>

@@ -1,311 +1,368 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ContentBlock from '../components/ContentBlock.astro';
-import CountrySelector from '../components/CountrySelector.astro';
-import HelplineCard from '../components/HelplineCard.astro';
-import { getTranslations } from '../i18n/utils';
-import helplines from '../data/helplines.json';
+import Layout from "../layouts/Layout.astro";
+import HelplineCard from "../components/HelplineCard.astro";
+import ContentBlock from "../components/ContentBlock.astro";
+import { getTranslations } from "../i18n/utils";
+import helplines from "../data/helplines.json";
 
 const t = getTranslations();
-const allCountries = Object.values(helplines);
+const allCountries = Object.entries(helplines).map(([code, data]) => ({
+    code,
+    ...data,
+}));
 ---
 
 <Layout
-  title={t.meta.title}
-  description={t.meta.description}
-  keywords={t.meta.keywords}
+    title={t.meta.title}
+    description={t.meta.description}
+    keywords={t.meta.keywords}
 >
-  <!-- Секция 1: Экран паузы -->
-  <section id="pause" class="section-fullscreen pause-section" aria-label="Экран паузы">
-    <div class="pause-content text-center">
-      <h1 class="pause-title" data-i18n="pause.title">{t.pause.title}</h1>
-      <p class="pause-subtitle" data-i18n="pause.subtitle">{t.pause.subtitle}</p>
+    <section class="grounding-screen" aria-label="Экран заземления и помощи">
+        <div class="container grounding-content">
+            <div class="grounding-head">
+                <h1 class="grounding-title" data-i18n="pause.title">
+                    {t.pause.title}
+                </h1>
+                <p class="grounding-text" data-i18n="pause.subtitle">
+                    {t.pause.subtitle}
+                </p>
+            </div>
 
-      <div class="pause-actions mt-xl">
-        <button
-          id="scroll-to-helpline"
-          class="btn btn-primary btn-large"
-          type="button"
-          data-i18n="common.helpline"
-          data-i18n-aria="common.helpline"
-          aria-label={t.common.helpline}
-        >
-          {t.common.helpline}
-        </button>
-        <button
-          id="scroll-to-content"
-          class="btn btn-secondary btn-large"
-          type="button"
-          data-i18n="pause.ready"
-          data-i18n-aria="pause.ready"
-          aria-label={t.pause.ready}
-        >
-          {t.pause.ready}
-        </button>
-      </div>
-    </div>
+            <div class="all-hotlines-direct" id="hotlines-list">
+                {
+                    allCountries.map((c) => {
+                        const primaryLine = (c as any).primary || c.lines[0];
+                        return (
+                            <div class="direct-row" data-country-code={c.code}>
+                                <span
+                                    class="direct-country"
+                                    data-name-ru={c.name}
+                                    data-name-en={(c as any).nameEn || c.name}
+                                    data-name-kk={(c as any).nameKk || c.name}
+                                >
+                                    {c.name}
+                                </span>
+                                <a
+                                    href={`tel:${primaryLine.phone.replace(/[^\d+]/g, "")}`}
+                                    class="direct-phone"
+                                >
+                                    {primaryLine.phone}
+                                </a>
+                            </div>
+                        );
+                    })
+                }
+            </div>
+        </div>
+    </section>
 
-    <div class="scroll-indicator" aria-hidden="true">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 5v14M19 12l-7 7-7-7"/>
-      </svg>
-    </div>
-  </section>
+    <section id="content" class="content-section" aria-label="Текст поддержки">
+        <div class="container">
+            <div class="statements-list">
+                <ContentBlock
+                    text={t.content.search}
+                    highlight={true}
+                    i18nKey="content.search"
+                />
+                <ContentBlock
+                    text={t.content.block1}
+                    i18nKey="content.block1"
+                />
+                <ContentBlock
+                    text={t.content.block2}
+                    i18nKey="content.block2"
+                />
+                <ContentBlock
+                    text={t.content.block3}
+                    i18nKey="content.block3"
+                />
+                <ContentBlock
+                    text={t.content.block4}
+                    i18nKey="content.block4"
+                />
+                <ContentBlock
+                    text={t.content.block5}
+                    i18nKey="content.block5"
+                />
+                <ContentBlock
+                    text={t.content.block6}
+                    highlight={true}
+                    i18nKey="content.block6"
+                />
+                <ContentBlock
+                    text={t.content.block7}
+                    i18nKey="content.block7"
+                />
+                <ContentBlock
+                    text={t.content.block8}
+                    i18nKey="content.block8"
+                />
+                <ContentBlock
+                    text={t.content.block9}
+                    i18nKey="content.block9"
+                />
+                <ContentBlock
+                    text={t.content.block10}
+                    highlight={true}
+                    i18nKey="content.block10"
+                />
+            </div>
+        </div>
+    </section>
 
-  <!-- Секция 2: Основной текст поддержки -->
-  <section id="content" class="section content-section" aria-label="Текст поддержки">
-    <div class="container">
-      <ContentBlock text={t.content.search} highlight={true} i18nKey="content.search" />
-      <ContentBlock text={t.content.block1} i18nKey="content.block1" />
-      <ContentBlock text={t.content.block2} i18nKey="content.block2" />
-      <ContentBlock text={t.content.block3} i18nKey="content.block3" />
-      <ContentBlock text={t.content.block4} i18nKey="content.block4" />
-      <ContentBlock text={t.content.block5} i18nKey="content.block5" />
-      <ContentBlock text={t.content.block6} highlight={true} i18nKey="content.block6" />
-      <ContentBlock text={t.content.block7} i18nKey="content.block7" />
-      <ContentBlock text={t.content.block8} i18nKey="content.block8" />
-      <ContentBlock text={t.content.block9} i18nKey="content.block9" />
-      <ContentBlock text={t.content.block10} highlight={true} i18nKey="content.block10" />
-    </div>
-  </section>
+    <section
+        id="resources"
+        class="resources-section"
+        aria-label="Все линии подробно"
+    >
+        <div class="container">
+            <div class="resources-head">
+                <h2 data-i18n="resources.title">{t.resources.title}</h2>
+            </div>
 
-  <!-- Секция 3: Ресурсы и контакты -->
-  <section id="resources" class="section resources-section" aria-label="Ресурсы и контакты">
-    <div class="container">
-      <h2 class="resources-title" data-i18n="resources.title">{t.resources.title}</h2>
-
-      <div class="resources-selector mb-xl">
-        <CountrySelector label={t.resources.selectCountry} />
-      </div>
-
-      <h3 class="resources-subtitle" data-i18n="resources.allCountries">{t.resources.allCountries}</h3>
-
-      <div class="resources-grid">
-        {allCountries.map(country => (
-          <HelplineCard
-            countryName={country.name}
-            countryNameEn={(country as any).nameEn}
-            countryNameKk={(country as any).nameKk}
-            lines={country.lines}
-            freeLabel={t.common.free}
-          />
-        ))}
-      </div>
-
-      <div class="help-others card mt-2xl">
-        <h3 class="mb-md" data-i18n="resources.helpOthers">{t.resources.helpOthers}</h3>
-        <p class="text-secondary mb-md" data-i18n="resources.helpOthersText1">{t.resources.helpOthersText1}</p>
-        <ul class="help-others-list">
-          <li data-i18n="resources.helpOthersText2">{t.resources.helpOthersText2}</li>
-          <li data-i18n="resources.helpOthersText3">{t.resources.helpOthersText3}</li>
-          <li data-i18n="resources.helpOthersText4">{t.resources.helpOthersText4}</li>
-          <li data-i18n="resources.helpOthersText5">{t.resources.helpOthersText5}</li>
-          <li data-i18n="resources.helpOthersText6">{t.resources.helpOthersText6}</li>
-        </ul>
-        <a href="/help-someone" class="help-others-link" data-i18n="resources.helpOthersLink">
-          {t.resources.helpOthersLink}
-        </a>
-      </div>
-
-      <a href="/seems" class="nav-card fade-in mt-xl" data-i18n="resources.seemsLikeLink">
-        {t.resources.seemsLikeLink}
-        <svg class="nav-card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </section>
-
+            <div class="helplines-container">
+                {
+                    allCountries.map((country) => (
+                        <HelplineCard
+                            countryName={country.name}
+                            countryNameEn={(country as any).nameEn}
+                            countryNameKk={(country as any).nameKk}
+                            lines={country.lines}
+                        />
+                    ))
+                }
+            </div>
+        </div>
+    </section>
 </Layout>
 
 <style>
-  /* Секция паузы */
-  .pause-section {
-    position: relative;
-    padding-bottom: 100px;
-  }
-
-  .pause-content {
-    max-width: 600px;
-    padding: 0 var(--space-lg);
-  }
-
-  .pause-title {
-    margin-bottom: var(--space-xl);
-    color: var(--color-text);
-  }
-
-  .pause-subtitle {
-    font-size: 1.25rem;
-    color: var(--color-text-secondary);
-    line-height: 1.7;
-    font-weight: 400;
-  }
-
-  .pause-actions {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-    align-items: center;
-    max-width: 100%;
-  }
-
-  @media (min-width: 640px) {
-    .pause-actions {
-      flex-direction: row;
-      justify-content: center;
-      flex-wrap: wrap;
+    .grounding-screen {
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 0;
     }
-  }
 
-  .scroll-indicator {
-    position: absolute;
-    bottom: 120px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: var(--color-text-muted);
-    animation: bounce 2s ease-in-out infinite;
-  }
-
-  @keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(10px); }
-  }
-
-  /* Секция контента */
-  .content-section {
-    padding-top: var(--space-3xl);
-    padding-bottom: var(--space-3xl);
-  }
-
-  /* Секция ресурсов */
-  .resources-section {
-    background: var(--color-bg-secondary);
-    padding-bottom: var(--space-3xl);
-  }
-
-  .resources-title {
-    margin-bottom: var(--space-xl);
-  }
-
-  .resources-subtitle {
-    margin-bottom: var(--space-lg);
-    color: var(--color-text-secondary);
-  }
-
-  .resources-selector {
-    max-width: 300px;
-  }
-
-  .resources-grid {
-    display: grid;
-    gap: var(--space-lg);
-  }
-
-  @media (min-width: 768px) {
-    .resources-grid {
-      grid-template-columns: repeat(2, 1fr);
+    .grounding-content {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
     }
-  }
 
-  .help-others-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-  }
-
-  .help-others-list li {
-    padding-left: var(--space-lg);
-    position: relative;
-    color: var(--color-text-secondary);
-  }
-
-  .help-others-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.7em;
-    width: 6px;
-    height: 6px;
-    background: var(--color-accent);
-    border-radius: 50%;
-  }
-
-  .help-others-link {
-    display: inline-block;
-    margin-top: var(--space-lg);
-    font-weight: 500;
-    font-size: 0.9375rem;
-  }
-
-  /* Навигационные карточки */
-  .nav-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-md);
-    padding: var(--space-md) var(--space-lg);
-    background: rgba(45, 40, 56, 0.5);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    color: var(--color-text);
-    font-size: 0.9375rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
-  }
-
-  .nav-card:hover {
-    border-color: var(--color-accent);
-    background: var(--color-accent-soft);
-    color: var(--color-accent);
-    text-decoration: none;
-  }
-
-  .nav-card-arrow {
-    flex-shrink: 0;
-    opacity: 0.5;
-    transition: opacity var(--transition-fast), transform var(--transition-fast);
-  }
-
-  .nav-card:hover .nav-card-arrow {
-    opacity: 1;
-    transform: translateX(3px);
-  }
-
-
-  @media (prefers-reduced-motion: reduce) {
-    .scroll-indicator {
-      animation: none;
+    .grounding-head {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
     }
-  }
+
+    .grounding-title {
+        font-size: var(--font-hero);
+        line-height: 1.15;
+        letter-spacing: -0.03em;
+        color: var(--text-primary);
+        margin: 0;
+    }
+
+    .grounding-text {
+        font-size: clamp(1.15rem, 3vw, 1.45rem);
+        line-height: 1.5;
+        color: var(--text-muted);
+        margin: 0;
+    }
+
+    .all-hotlines-direct {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        padding: 2rem 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .direct-row {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        font-size: 1.15rem;
+    }
+
+    .direct-country {
+        color: var(--text-muted);
+    }
+
+    .direct-phone {
+        color: var(--text-primary);
+        font-weight: 500;
+        text-decoration: none;
+        font-size: 1.25rem;
+    }
+
+    .direct-phone:hover {
+        color: var(--accent);
+        text-decoration: underline;
+    }
+
+    .direct-row.detected {
+        order: -1;
+    }
+
+    .direct-row.detected .direct-country {
+        color: var(--text-primary);
+        font-weight: 500;
+    }
+
+    .direct-row.detected .direct-phone {
+        font-size: 1.45rem;
+        color: var(--text-primary);
+    }
+
+    .content-section {
+        padding: 6rem 0;
+        border-top: 1px solid var(--border);
+    }
+
+    .statements-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .resources-section {
+        padding: 6rem 0;
+        border-top: 1px solid var(--border);
+    }
+
+    .resources-head {
+        margin-bottom: 2.5rem;
+    }
+
+    .resources-head h2 {
+        margin: 0;
+    }
+
+    .helplines-container {
+        display: flex;
+        flex-direction: column;
+    }
 </style>
 
 <script>
-  function initNavigation() {
-    // Кнопка "Телефон доверия"
-    const scrollToHelplineBtn = document.getElementById('scroll-to-helpline');
-    const resourcesSection = document.getElementById('resources');
-
-    if (scrollToHelplineBtn && resourcesSection) {
-      scrollToHelplineBtn.addEventListener('click', () => {
-        resourcesSection.scrollIntoView({ behavior: 'smooth' });
-      });
+    function getCountryFromTimezone(): string | null {
+        try {
+            const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            if (!tz) return null;
+            if (
+                tz.includes("Almaty") ||
+                tz.includes("Qyzylorda") ||
+                tz.includes("Qostanay") ||
+                tz.includes("Oral") ||
+                tz.includes("Aqtau") ||
+                tz.includes("Aqtobe") ||
+                tz.includes("Atyrau") ||
+                tz.includes("Asia/Almaty")
+            )
+                return "KZ";
+            if (
+                tz.includes("Moscow") ||
+                tz.includes("Yekaterinburg") ||
+                tz.includes("Novosibirsk") ||
+                tz.includes("Krasnoyarsk") ||
+                tz.includes("Irkutsk") ||
+                tz.includes("Vladivostok") ||
+                tz.includes("Samara") ||
+                tz.includes("Omsk")
+            )
+                return "RU";
+            if (
+                tz.includes("Kyiv") ||
+                tz.includes("Kiev") ||
+                tz.includes("Uzhgorod") ||
+                tz.includes("Zaporozhye")
+            )
+                return "UA";
+            if (tz.includes("Minsk")) return "BY";
+            if (tz.includes("Bishkek")) return "KG";
+            if (tz.includes("Tashkent")) return "UZ";
+            if (tz.includes("Tbilisi")) return "GE";
+            if (tz.includes("Yerevan")) return "AM";
+            if (tz.includes("Chisinau")) return "MD";
+            if (tz.includes("Warsaw")) return "PL";
+            if (tz.includes("Berlin")) return "DE";
+            if (tz.includes("Vilnius")) return "LT";
+            if (tz.includes("Riga")) return "LV";
+            if (tz.includes("Tallinn")) return "EE";
+            if (tz.includes("America/")) return "US";
+            if (tz.includes("London") || tz.includes("Europe/London"))
+                return "GB";
+        } catch {}
+        return null;
     }
 
-    // Кнопка "Я готов читать дальше"
-    const scrollToContentBtn = document.getElementById('scroll-to-content');
-    const contentSection = document.getElementById('content');
-
-    if (scrollToContentBtn && contentSection) {
-      scrollToContentBtn.addEventListener('click', () => {
-        contentSection.scrollIntoView({ behavior: 'smooth' });
-      });
+    function getCountryFromLocale(): string | null {
+        const langs = navigator.languages || [navigator.language || ""];
+        for (const l of langs) {
+            const parts = l.split("-");
+            if (parts.length > 1) {
+                const region = parts[1].toUpperCase();
+                if (region) return region;
+            }
+        }
+        return null;
     }
-  }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initNavigation);
-  } else {
-    initNavigation();
-  }
+    async function fetchCountryFromIp(): Promise<string | null> {
+        try {
+            const res = await fetch("https://ipapi.co/json/", {
+                signal: AbortSignal.timeout(1500),
+            });
+            const data = await res.json();
+            if (data.country_code) return data.country_code;
+        } catch {}
+
+        try {
+            const res = await fetch("https://ipwho.is/", {
+                signal: AbortSignal.timeout(1500),
+            });
+            const data = await res.json();
+            if (data.country_code) return data.country_code;
+        } catch {}
+
+        return null;
+    }
+
+    async function applyDetectedCountry() {
+        let country = getCountryFromTimezone() || getCountryFromLocale();
+
+        const updateUI = (code: string) => {
+            const row = document.querySelector(
+                `.direct-row[data-country-code="${code}"]`,
+            );
+            if (row) {
+                document
+                    .querySelectorAll(".direct-row")
+                    .forEach((r) => r.classList.remove("detected"));
+                row.classList.add("detected");
+                const parent = document.getElementById("hotlines-list");
+                if (parent) parent.prepend(row);
+            }
+        };
+
+        if (country) {
+            updateUI(country);
+        }
+
+        const ipCountry = await fetchCountryFromIp();
+        if (ipCountry) {
+            updateUI(ipCountry);
+        }
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", applyDetectedCountry);
+    } else {
+        applyDetectedCountry();
+    }
 </script>
